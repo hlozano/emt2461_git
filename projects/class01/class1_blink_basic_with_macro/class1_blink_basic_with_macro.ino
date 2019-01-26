@@ -11,7 +11,9 @@
 //const prefix is optional
 //it only helps ensure no one will
 // change its value in execution time
-
+//use a macro
+//#define LEDpin 13
+//OR a definition
 const int LEDpin = 13;
 void setup()
 { 
