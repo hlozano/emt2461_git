@@ -7,7 +7,7 @@
 unsigned int counter = 0;
 unsigned long time = 0;   // this wont interfere with any local variables called time
 unsigned long old_time = 0;
-int tpm = 0;
+int temp_integer = 0;
 
 void myfunction(void);
 
@@ -19,7 +19,7 @@ void setup()
 void loop()
 {
   unsigned long time; 
-  int special_var;		//variable with local scope
+  int special_var = 1;    //variable with local scope
 
   counter++; // use counter to print only every 1000 times we go trhough loop.
   myfunction();   //experiment by adding and 
@@ -33,27 +33,28 @@ void loop()
     old_time = time;
     counter = 0;
     Serial.println("special variable");
-    Serial.println(special_var);
+    Serial.println( temp_integer / special_var);
   }
 }
 
 void myfunction()
-{// this is a really pointless function that executes 1000 insructions
+{// this is a really pointless function that executes N insructions
   int i;
-  for(i = 0;i<=1000;i++)//<---- play with this number
-    tpm = tpm + 1;
+  int N = 1000;//<---- play with this number
+  for(i = 1;i<=N;i++)
+   // temp_integer = temp_integer + 1;//compiler too smart for this
+    temp_integer = temp_integer + temp_integer % i;
 }
 
 
 /*
 when this program is run using N iterations inside myfunction() it yields a loop time of____
 
-
-N		Loop time
-1000	254 us
-2000	507 us
-3000	760 us
-
+N     Loop time
+0001    55 us
+0010    144 us
+0100    1418 us ~ 1.4 ms
+1000    14214 us ~ 14.214 ms
 
 
 */
