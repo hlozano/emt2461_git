@@ -10,7 +10,7 @@ void loop()
    delay(1000);
 }
 /*
-in normal c programming you ahve
+in normal c programming you have
 int main()
 {
 

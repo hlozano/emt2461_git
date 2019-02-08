@@ -9,6 +9,10 @@ unsigned long debug_print_tmr = 0;
 //review on data types
 bool myboolvar = FALSE; // same as myboolvar= 0;
 
+void flash_LED1_pin(void);
+void flash_LED2_pin(void);
+void flash_LED3_pin(void);
+
 const int LED1_pin = 11;
 const int LED2_pin = 12;
 const int LED3_pin = 13;
