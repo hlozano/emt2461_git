@@ -2,9 +2,9 @@
 unsigned long ms_runtime = 0;
 unsigned int one_ms_timer;
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
-unsigned long timer1 = 0; // timer1 is incremented every 100ms = 0.1s
-unsigned long timer2 = 0; // timer2 is incremented every 100ms = 0.1s
-unsigned long timer3 = 0; // timer3 is incremented every 100ms = 0.1s
+unsigned long LED1_timer = 0; // LED1_timer is incremented every 100ms = 0.1s
+unsigned long LED2_timer = 0; // LED2_timer is incremented every 100ms = 0.1s
+unsigned long LED3_timer = 0; // LED3_timer is incremented every 100ms = 0.1s
 unsigned long debug_print_tmr = 0;
 //review on data types
 bool myboolvar = FALSE; // same as myboolvar= 0;
@@ -40,35 +40,35 @@ void debug_print()
 }
 void flash_LED1_pin() 
 {
-	if(timer1<10)			//first 10 (10 times 100 ms = 1s)
+	if(LED1_timer<5)			//first 10 (10 times 100 ms = 1s)
 		digitalWrite(LED1_pin,HIGH); 
 	else // greater or equal to 10
 	{
 		digitalWrite(LED1_pin,LOW);
-		if(timer1>=20) //(between 10 and 20 - another 1 s)
-			timer1 = 0;	//When does the timer get cleared?
+		if(LED1_timer>=2100) //(between 10 and 20 - another 1 s)
+			LED1_timer = 0;	//When does the timer get cleared?
 	}
 }
 void flash_LED2_pin()
 {
-	if(timer2<20)			//Check timer and execute action 
+	if(LED2_timer<20)			//Check timer and execute action 
 		digitalWrite(LED2_pin,HIGH); 
 	else
 	{
 		digitalWrite(LED2_pin,LOW);
-		if(timer2>=40)
-			timer2 = 0;	//When does the timer get cleared?
+		if(LED2_timer>=40)
+			LED2_timer = 0;	//When does the timer get cleared?
 	}
 }
 void flash_LED3_pin()
 {
-	if(timer3<39)			//Check timer and execute action 
+	if(LED3_timer<30)			//Check timer and execute action 
 		digitalWrite(LED3_pin,HIGH); 
 	else
 	{
 		digitalWrite(LED3_pin,LOW);
-		if(timer3>=78)
-			timer3 = 0;	//When does the timer get cleared?
+		if(LED3_timer>=60)
+			LED3_timer = 0;	//When does the timer get cleared?
 	}
 }
 void timers(void)
@@ -79,16 +79,16 @@ void timers(void)
 		ms_runtime++;
 		one_ms_timer++;  
 	}
-	else if( ms_runtime > millis())// every 49 days we need to correct variable
-	{// when ms_run time is 4,294,967,295 millis() will return 0
+	else if( ms_runtime > millis())
+	{
 		ms_runtime = millis();
-	}
+	}	
 
 	if(one_ms_timer > 99)
 	{ // this runs every 100 ms
-		timer1++;
-		timer2++;
-		timer3++;
+		LED1_timer++;
+		LED2_timer++;
+		LED3_timer++;
 		debug_print_tmr++;
 		one_ms_timer = 0;
 	}
