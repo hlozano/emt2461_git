@@ -1,7 +1,7 @@
 /*		TIMERS REVIEW		*/
 
-unsigned long ms_runtime;
-int one_ms_timer;
+unsigned long ms_runtime = 0;
+int one_ms_timer = 0; 
 
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 
