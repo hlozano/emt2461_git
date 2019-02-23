@@ -29,8 +29,9 @@ void loop()
   // read a byte from the current address of the EEPROM
   myvariable = EEPROM.read(address);
  
+  Serial.print(" memory location ");
   Serial.print(address);
-  Serial.print(" memory location \t contains ");
+  Serial.print("   contains ");
   Serial.print(myvariable);
   Serial.println();
 	//for(;;);
