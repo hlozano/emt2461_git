@@ -29,7 +29,7 @@ void setup()
 	if(value != 99)	// Memory was not initialized
 	{
 		Serial.println("data was not initialized");
-		EEPROM.write(ee_address,101); // make sure I leave a mark knowing I was here
+		EEPROM.write(ee_address,99); // make sure I leave a mark knowing I was here
 		myint = 30000; // 30000
 		ee_address++;
 		EEPROM.write(ee_address,mybytes[0]);
