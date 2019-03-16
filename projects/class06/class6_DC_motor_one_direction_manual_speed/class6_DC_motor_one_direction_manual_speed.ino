@@ -13,13 +13,15 @@ void loop()
   {
     char ch = Serial.read();
     if(ch >= '0' && ch <= '9')
+    //same as saying (byte) ch > 48 && ch <= 57
     {
       //possible values of char at this point: 48d -> 57
-      // int speed = ch - '0'; // gives me a number btw 0 and 9
-      int speed = (int)ch - 48; // gives me a number btw 0 and 9
+      // int speed_level = ch - '0'; // gives me a number btw 0 and 9
+      int speed_level = (int)ch - 48; // gives me a number btw 0 and 9
+      int speed_value = speed_level * 28;
       //possible values of char at this point: 0d  -> 9d
-      analogWrite(motorPin, speed * 28);
-      // speed used in calculation above 0  ->  252
+      analogWrite(motorPin, speed_value);
+      // speed_level used in calculation above 0  ->  252
       if(ch >= '0' && ch <= '5')
         digitalWrite(13,HIGH);
       else
