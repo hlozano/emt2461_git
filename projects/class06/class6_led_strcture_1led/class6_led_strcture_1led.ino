@@ -4,15 +4,14 @@
  
   This example code is in the public domain.
  */
- struct LED 
+ struct LED //name of the template used for this structure
  {
    int addr;
    int dir; // 0 for input 1 for output
  } ;
  
- struct LED newLED1;
+ struct LED newLED1; //LED1 is an instance of the LED data type (a.k.a structure template)
  
- struct LED newLED2;
 
 void setup() 
 {                

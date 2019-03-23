@@ -24,6 +24,9 @@ void motor_stop(void);
 void motor_run_up(void);
 void motor_run_dn(void);
 
+
+
+
 void setup()
 {               
 	Serial.begin(9600); 
