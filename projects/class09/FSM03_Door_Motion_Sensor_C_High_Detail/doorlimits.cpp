@@ -2,7 +2,7 @@
 #include "main.h"
 #include "timers.h"
 
-#define SIMULATE_DOORS 1
+#define SIMULATE_DOORS 0
 
 int is_sensor_active(void);
 int is_door_closed(void);
