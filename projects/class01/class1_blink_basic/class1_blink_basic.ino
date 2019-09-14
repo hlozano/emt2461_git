@@ -9,6 +9,8 @@ void loop()
    digitalWrite(13,LOW); // 0V
    delay(1000);
 }
+
+
 /*
 in normal c programming you have
 int main()
@@ -19,7 +21,7 @@ int main()
 int main()
 {
 	setup();
-	while(1)
+	while(1) //loop based on a condition
 	{
 		loop();
 	}
