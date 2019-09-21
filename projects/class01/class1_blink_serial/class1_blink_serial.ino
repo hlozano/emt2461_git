@@ -25,7 +25,7 @@ void loop()
 	digitalWrite(LEDpin, LOW);    // set the LED off
   Serial.println("LOW");
 	delay(1000);              // wait for a second
-  time_running = millis();
+  time_running = millis(); // similar "micros()"
   Serial.println(time_running);// time that has passed 
 							 //up to the this point
 }

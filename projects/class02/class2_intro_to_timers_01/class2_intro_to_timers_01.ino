@@ -1,4 +1,4 @@
-// CALCULATE LOOP CYCLE USING A COUNTER - Works for over a month
+	// CALCULATE LOOP CYCLE USING A COUNTER - Works for over a month
 unsigned long ms_runtime = 0; // record the # ms the mcu has been running
 unsigned long one_ms_timer = 0; //will help me track one ms intervals
 								// this one keeps track of one ms intervals
