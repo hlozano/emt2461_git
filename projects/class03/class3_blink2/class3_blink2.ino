@@ -5,7 +5,7 @@ int one_ms_timer;
 
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 
-unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
+unsigned long LED1_tmr; // LED1_tmr is incremented every 100ms = 0.1s
 
 const int LED1 = 13;
 
@@ -25,13 +25,13 @@ void loop()
 }
 void flash_led1() 
 {
-	if(timer1<10)			//first 10 (10 times 100 ms = 1s)
+	if(LED1_tmr<10)			//first 10 (10 times 100 ms = 1s)
 		digitalWrite(LED1,HIGH); 
 	else
 	{
 		digitalWrite(LED1,LOW);
-		if(timer1>=20) //(between 10 and 20 - another 1 s)
-			timer1 = 0;	//When does the timer get cleared?
+		if(LED1_tmr>=20) //(between 10 and 20 - another 1 s)
+			LED1_tmr = 0;	//When does the timer get cleared?
 	}
 }
 void timers(void)
@@ -52,7 +52,7 @@ void timers(void)
 	//}
 	if(one_ms_timer > 99)
 	{
-		timer1++;
+		LED1_tmr++;
 		one_ms_timer = 0;
 	}
 }

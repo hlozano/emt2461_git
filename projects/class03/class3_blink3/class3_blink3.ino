@@ -5,7 +5,7 @@ int one_ms_timer;
 
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 
-unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
+unsigned long timer1 = 5; // timer1 is incremented every 100ms = 0.1s
 unsigned long timer2; // timer2 is incremented every 100ms = 0.1s
 unsigned long timer3; // timer3 is incremented every 100ms = 0.1s
 
@@ -87,7 +87,8 @@ void timers(void)
 
 	if(one_ms_timer > 99) // every 100 ms
 	{
-		if(timer1 <4000000000)
+		if(timer1 <4000000000) // if needed if timer 
+							//never clears in more than a month
 		{
 			timer1++;
 			timer2++;

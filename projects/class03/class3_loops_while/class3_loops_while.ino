@@ -34,8 +34,8 @@ void loop()
     i++;
   }
   Serial.print("done with my 2nd while loop");
-  while(1); // lock program forever
-  while(TRUE); // lock program forever
+  //while(1); // lock program forever
+  //while(TRUE); // lock program forever
   while(2); // lock program forever
 }
 

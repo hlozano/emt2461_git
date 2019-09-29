@@ -16,7 +16,8 @@ void loop()
 		ms_runtime = ms_runtime + 1;
 		one_ms_timer++;  
 	}
-	if(one_ms_timer>=1000)
+	// if(one_ms_timer>=1000)
+	if(one_ms_timer>=100)
 	{	
 		one_ms_timer = 0;
 		Serial.print("counter  ");

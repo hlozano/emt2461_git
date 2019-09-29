@@ -45,7 +45,7 @@ void flash_LED1_pin()
 	else // greater or equal to 10
 	{
 		digitalWrite(LED1_pin,LOW);
-		if(LED1_timer>=2100) //(between 10 and 20 - another 1 s)
+		if(LED1_timer>=10) //(between 10 and 20 - another 1 s)
 			LED1_timer = 0;	//When does the timer get cleared?
 	}
 }
@@ -82,6 +82,7 @@ void timers(void)
 	else if( ms_runtime > millis())
 	{
 		ms_runtime = millis();
+		one_ms_timer++; 
 	}	
 
 	if(one_ms_timer > 99)
