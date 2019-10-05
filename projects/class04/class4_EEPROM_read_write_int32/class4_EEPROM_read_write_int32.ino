@@ -15,7 +15,7 @@ Unsigned long variables are extended size variables for number storage,
 and store 32 bits (4 bytes). Unlike standard longs unsigned longs won't 
 store negative numbers, making their range from 0 to 4,294,967,295 (2^32 - 1)
 */
-static union {
+ union {
 		unsigned char mybytes[4];		// 4- 8 bit bytes (I could have used data type "byte")
 		unsigned long int mylongint;			// 1-32 bit word
 	};
@@ -58,35 +58,32 @@ void loop()
 	ee_address = 0;
 	//READ MEMORY
 	value = EEPROM.read(ee_address);
-	ee_address++;
+	ee_address = 1;
 	mybytes[0] = EEPROM.read(ee_address); // ee_address 1
-	ee_address++;
+	ee_address = 2;
 	mybytes[1] = EEPROM.read(ee_address); //ee_address 2
-	ee_address++;
+	ee_address = 3;
 	mybytes[2] = EEPROM.read(ee_address);//ee_address 3
-	ee_address++;
+	ee_address = 4;
 	mybytes[3] = EEPROM.read(ee_address);//ee_address 4
 	//at this point mylongint has the data that
 	//was previousky saved.... 4 000 000 000 (first time)
 	mylongint++; // SAME AS THE OTHER PROGRAM WHEN WE DID ... value++
 
-	Serial.print(ee_address);
+	Serial.print('marker');
 	Serial.print("\t");
 	Serial.print(value, DEC);
-	Serial.println();
-	
-	Serial.print(ee_address);
 	Serial.print("\t");
 	Serial.print(mylongint, DEC);
 	Serial.println();
 
 	ee_address = 1;
 	EEPROM.write(ee_address,mybytes[0]);
-	ee_address++;
+	ee_address = 2;
 	EEPROM.write(ee_address,mybytes[1]);
-	ee_address++;
+	ee_address = 3;
 	EEPROM.write(ee_address,mybytes[2]);
-	ee_address++;
+	ee_address = 4;
 	EEPROM.write(ee_address,mybytes[3]);	
 	
 

@@ -15,6 +15,9 @@
 //#define LEDpin 13
 //OR a definition
 const int LEDpin = 13;
+const int LED_Blink_Rate = 1000;
+
+
 void setup()
 { 
   pinMode(LEDpin,OUTPUT);
@@ -23,9 +26,9 @@ void loop()
 {
 	
    digitalWrite(LEDpin,HIGH);
-   delay(1000);
+   delay(LED_Blink_Rate);
    digitalWrite(LEDpin,LOW);
-   delay(1000);
+   delay(LED_Blink_Rate);
 }
 
 

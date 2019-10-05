@@ -23,7 +23,7 @@ void loop()
 {
     timers();
 	if(digitalRead(buttonPin) == 1) 
-	{
+	{  // 10 times 0.100 s( 100ms) = 1 second
 		if(button_dbnc_tmr >= 10) // [0,1,2,3,4,5,6,7,8,9] -> 10 times 100 ms (ten iterations of 100ms = 1 sec)
 			digitalWrite(LED1_pin, HIGH); 
 	}
