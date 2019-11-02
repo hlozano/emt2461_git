@@ -1,4 +1,4 @@
-/*		TIMERS MADE EASY BY HERNAN LOZANO		*/
+/*		DC motor control program. One direction only.		*/
 
 unsigned long ms_runtime;
 int one_ms_timer;

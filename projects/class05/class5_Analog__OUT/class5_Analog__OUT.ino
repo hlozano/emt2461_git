@@ -1,4 +1,8 @@
-        // variable to store the read value
+
+/* Program to set the analog output */
+/* Increases output to Max, then sets to zero and repeats*/
+
+
 /*
 Syntax
 analogWrite(pin, value)
