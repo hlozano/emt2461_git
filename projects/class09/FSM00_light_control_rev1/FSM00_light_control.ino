@@ -1,3 +1,7 @@
+/*this program works for two buttons that 
+work as a 3 way switch but they only 
+require a press to toggle light on and off from any source*/
+
 
 /*variables required for timers() to work*/
 unsigned long ms_runtime;

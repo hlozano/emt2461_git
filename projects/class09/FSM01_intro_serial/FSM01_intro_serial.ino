@@ -1,3 +1,6 @@
+/*very basic program to simulate a basic elevator that is manually controlled to run or stop
+the controlling here is done by a serial port*/
+
 /*		INTRO TO FINITE STATE MACHINES		*/
 int state = 0;
 int goup_cmd = 0;
