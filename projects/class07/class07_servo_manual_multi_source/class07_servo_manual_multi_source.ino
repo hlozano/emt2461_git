@@ -43,6 +43,5 @@ void heart_beat(void)
 		digitalWrite(LED1,LOW); 
 	else
 		timer1 = 0;
-
 }
 

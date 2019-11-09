@@ -39,33 +39,32 @@ void loop()
 
 void light_control()
 {
-	static int allow_button;
+	static int allow_button_once;
 	static int light_state;
 
 	if(button_pressed() == 0)
-		allow_button = 1;
+		allow_button_once = 1;
 	
 	switch(light_state)
 	{
 		case 0:				//OFF 
 			turn_light_off();
 			timer2 = 0; // timer used in time out for the ON light_state
-			if((button_pressed() == 1) && (allow_button == 1))
+			if((button_pressed() == 1) && (allow_button_once == 1))
 			{
 				light_state = 1;
-				allow_button = 0;
+				allow_button_once = 0;
 				break;
 			}
 			break;
 		case 1:				//ON
 			turn_light_on();
-			if((button_pressed() == 1) && (allow_button == 1))
+			if((button_pressed() == 1) && (allow_button_once == 1))
 			{
 				light_state = 0;
-				allow_button = 0;
+				allow_button_once = 0;
 			}
-			if(timer2 >  36000)  // after 3600.0 seconds light will turn off
-				light_state = 0;
+
 
 			break;
 		default:

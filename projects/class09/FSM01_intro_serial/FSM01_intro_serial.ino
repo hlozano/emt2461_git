@@ -55,18 +55,11 @@ void elevator_control(void)
 	{
 		case 0: //STOP
 			if(goup_cmd == 1)
-			{
 				state = 1;
-				clear_commands();	
-			}
 			else if(godn_cmd == 1)
-			{
 				state = 2;
-				clear_commands();	
-			}
 			else
 			{
-				clear_commands();	
 				motor_stop();
 				turn_off();
 			}
@@ -74,35 +67,29 @@ void elevator_control(void)
 	
 		case 1: // RUN UP STATE 
 			if(stop_cmd == 1)
-			{
 				state = 0;
-				clear_commands();	
-			}
 			else
 			{
 				motor_run_up();
 				flash_up_led();
-				clear_commands();
 			}
 			break;	
 	
 		case 2: // RUN DOWN STATE
 			if(stop_cmd == 1)
-			{
 				state = 0;
-				clear_commands();	
-			}
 			else
 			{
 				motor_run_dn();
 				flash_dn_led();
-				clear_commands();
 			}
 			break;	
 		default: 
 			state = 0;
 			break;
 	}
+	clear_commands();	
+
 	
 }
 
