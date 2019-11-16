@@ -28,6 +28,16 @@ void motor_run_up(void);
 void motor_run_dn(void);
 
 
+void turn_on(void)
+{
+  digitalWrite(up_led_pin,HIGH);
+}
+
+void turn_off(void)
+{
+  digitalWrite(up_led_pin,LOW);
+}
+
 
 
 void setup()
@@ -37,7 +47,7 @@ void setup()
 }
 void loop()
 {
-    timers();
+  	timers();
 	elevator_control();
 	receive_serial();
 	transmit_serial();
@@ -99,19 +109,10 @@ void receive_serial(void)
 	{
 		inByte = Serial.read();
 		Serial.println(inByte);
-		Serial.println("GOT IT!");
+		//Serial.println("GOT IT!");
 		command = inByte;
-	}
-/*
-if(command == 'u') 
-	goup_cmd = 1;
-else if(command == 'd') 
-	godn_cmd = 1;
-else if(command == 's') 
-	stop_cmd = 1;
-else
-	Serial.println("Unrecognized command :/");
-*/
+	
+
 		switch (command)
 		{
 			case 'u': 
@@ -131,10 +132,12 @@ else
 	}
 }
 
+
 void transmit_serial(void)
 {
-	if(printing_tmr < 50) // 5 seconds
+	if(printing_tmr < 20) // 2 seconds
 		return;
+
 
 	printing_tmr = 0;
 
@@ -155,15 +158,7 @@ void transmit_serial(void)
 
 }
 
-void turn_on(void)
-{
-	digitalWrite(up_led_pin,HIGH);
-}
 
-void turn_off(void)
-{
-	digitalWrite(up_led_pin,LOW);
-}
 void flash_up_led() 
 {
 	if(up_led_tmr<5)			//first 10 (10 times 100 ms = 1s)
@@ -191,9 +186,9 @@ void flash_dn_led()
 
 void timers(void)
 {
-	unsigned long ms_runtime;
-	int one_ms_timer;
-	if(millis() > (ms_runtime + 1))
+	static unsigned long ms_runtime;
+	static int one_ms_timer;
+	if(millis() > ms_runtime)
 	{
 		ms_runtime = ms_runtime + 1;
 		one_ms_timer++;  
