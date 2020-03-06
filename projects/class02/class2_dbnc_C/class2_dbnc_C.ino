@@ -40,7 +40,6 @@ void loop()
 */
 void timers(void)
 {
-	int i;
 	if(millis() > ms_runtime)
 	{
 		ms_runtime = ms_runtime + 1;

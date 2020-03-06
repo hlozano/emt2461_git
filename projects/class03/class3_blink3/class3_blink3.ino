@@ -36,18 +36,21 @@ void setup()
 void loop()
 {
     timers();
-	flash_led1();
-	flash_led2();
-	flash_led3();
+	flash_led1();//task01
+	flash_led2();//task02
+	flash_led3();//task03
 }
+
+
+
 void flash_led1() 
 {
-	if(timer1<10)			//first 10 (10 times 100 ms = 1s)
+	if(timer1<1)			//first 10 (10 times 100 ms = 1s)
 		digitalWrite(LED1,HIGH); 
 	else
 	{
 		digitalWrite(LED1,LOW);
-		if(timer1>=20) //(between 10 and 20 - another 1 s)
+		if(timer1>=2) //(between 10 and 20 - another 1 s)
 			timer1 = 0;	//When does the timer get cleared?
 	
 }
@@ -76,14 +79,15 @@ void flash_led3()
 
 void timers(void)
 {
-	int i;
-	if(millis() > (ms_runtime + 1))
+	if(millis() > ms_runtime)
 	{
-		ms_runtime = ms_runtime + 1;
+		ms_runtime++;
 		one_ms_timer++;  
 	}
-	else if( ms_runtime > millis())
+	else if( millis() < ms_runtime)
 		ms_runtime = millis();
+	//else only executes ~ every 50 days
+
 
 	if(one_ms_timer > 99) // every 100 ms
 	{

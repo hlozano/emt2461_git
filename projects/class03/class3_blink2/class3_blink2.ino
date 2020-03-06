@@ -44,14 +44,9 @@ void timers(void)
 	}
 	else if( ms_runtime > millis())
 		ms_runtime = millis();
-	//better aapproach
-	//else if( ms_runtime > millis())
-	//{
-	//	ms_runtime = millis();
-	//	one_ms_timer++;
-	//}
+
 	if(one_ms_timer > 99)
-	{
+	{//increment all user defined timer variables
 		LED1_tmr++;
 		one_ms_timer = 0;
 	}
