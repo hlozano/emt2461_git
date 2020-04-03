@@ -1,20 +1,18 @@
-
 int motorPin = 3;
 void setup()
 {
   pinMode(13,OUTPUT);
   pinMode(motorPin, OUTPUT);
   analogWrite(motorPin, 0);
-  Serial.begin(9600);		// classes
+  Serial.begin(9600);		
 }
 void loop()
 {
-  if (Serial.available())
-  {
-    char ch = Serial.read();
+   if (Serial.available())
+   {
+    char ch = Serial.read(); // from PC keyboard you type '5'
     if(ch >= '0' && ch <= '9')
-    //same as saying (byte) ch > 48 && ch <= 57
-    {
+    {//same as saying (byte) ch > 48 && ch <= 57
       //possible values of char at this point: 48d -> 57
       // int speed_level = ch - '0'; // gives me a number btw 0 and 9
       int speed_level = (int)ch - 48; // gives me a number btw 0 and 9

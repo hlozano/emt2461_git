@@ -7,10 +7,8 @@ unsigned long motor_tmr;
 unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 unsigned long timer2; // timer2 is incremented every 100ms = 0.1s
 unsigned long timer3; // timer3 is incremented every 100ms = 0.1s
-const int motor_pin = 10;
-const int LED1 = 11;
-const int LED2 = 12;
-const int LED3 = 13;
+const int motorspeed_pin = 10;
+
 
 void setup()
 {
@@ -18,25 +16,28 @@ void setup()
 }
 void loop()
 {
-    inctimers();
+    timers();
     drive_motor();
 }
 void drive_motor()
 {
-  static int motor_speed = 0;
+  static int motor_speed_value = 0;
   if(motor_tmr>50)
   { // comes in every 5 seconds = 50 x 0.1 sec
-    if(motor_speed <250)
-		motor_speed = motor_speed + 25;
+    if(motor_speed_value < 250)
+		motor_speed_value = motor_speed_value + 25;
 	else
-		Serial.println("Already running full speed");
+	{
+		motor_speed_value = 255;
+		Serial.println("Running full speed");
+	}
 	motor_tmr = 0;
-    Serial.println(motor_speed);
+    Serial.println(motor_speed_value);
   }
-  analogWrite(motor_pin,motor_speed);
+  analogWrite(motorspeed_pin,motor_speed_value);
 }
 
-void inctimers(void)
+void timers(void)
 {
 	int i;
 	if(millis() > (ms_runtime + 1))
