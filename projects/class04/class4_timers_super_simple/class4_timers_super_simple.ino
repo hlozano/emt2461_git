@@ -115,6 +115,13 @@ void timers(void)
 		timer3++;
 		one_ms_timer = 0;
 	}
+	// this means that
+	// if timer1 is 10....... = 1s
+	// if timer1 is 100...... = 10s
+	// if timer1 is 1000..... = 100s
+	// if timer1 is 10000.... = 1000s
+	// if timer1 is 36000.... = 3600s = 1 hour
+	//
 
 }
 
