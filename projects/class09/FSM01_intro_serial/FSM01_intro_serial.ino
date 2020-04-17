@@ -44,6 +44,7 @@ void setup()
 {               
 	Serial.begin(9600); 
 	pinMode(up_led_pin, OUTPUT);
+	pinMode(dn_led_pin, OUTPUT);
 }
 void loop()
 {
@@ -199,6 +200,7 @@ void timers(void)
 	if(one_ms_timer > 99) // every 100 ms
 	{
 		up_led_tmr++;
+		dn_led_tmr++;
 		printing_tmr++;
 		one_ms_timer = 0;
 	}

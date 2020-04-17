@@ -1,7 +1,6 @@
 /*		TIMERS REVIEW		*/
 
-unsigned long ms_runtime = 0;
-int one_ms_timer = 0; 
+
 
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 
@@ -97,6 +96,8 @@ else // this is not written down but just implicit
 
 void timers(void)
 {
+	unsigned long ms_runtime = 0;
+	int one_ms_timer = 0; 
 	int i;
 	if(millis() > ms_runtime)
 	{
