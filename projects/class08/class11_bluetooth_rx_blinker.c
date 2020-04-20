@@ -1,4 +1,4 @@
-a/*		TIMERS MADE EASY BY HERNAN LOZANO		*/
+/*		TIMERS MADE EASY BY HERNAN LOZANO		*/
 
 unsigned long ms_runtime;
 int one_ms_timer;

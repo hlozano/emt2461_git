@@ -9,7 +9,8 @@
    int addr;
    int dir; // 0 for input 1 for output
  } ;
- 
+
+
  struct LED newLED1; //LED1 is an instance of the LED data type (a.k.a structure template)
  
 

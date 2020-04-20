@@ -27,11 +27,12 @@ void loop()
 	if (Serial.available() > 0) 
 	{
 		inByte = Serial.read();
-/*                Serial.println(inByte);
+/*                
+				Serial.println(inByte);
                 mystring[0] = (char)inByte;
                 Serial.println(mystring[0]);*/ 
                 //THIS CAN BE LEFT BEHIND BUT IT IS NOT NECESSARY
-				command = inByte;
+		command = inByte;
 	}
 	switch (command)
 	{

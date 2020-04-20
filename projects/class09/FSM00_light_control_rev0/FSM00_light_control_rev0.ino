@@ -37,7 +37,7 @@ void light_control()
 {
 	static int light_state;
 
-	// //STATE MACHINE USING IF AND ELSE IF STATEMENTS
+	//STATE MACHINE USING IF AND ELSE IF STATEMENTS
 	// if(light_state == 0)
 	// {
 	// 	turn_light_off();
@@ -55,6 +55,7 @@ void light_control()
 	// 		light_state = 0;
 	// 	}
 	// }
+
 
 
 
