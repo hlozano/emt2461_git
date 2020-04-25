@@ -106,6 +106,7 @@ void elevator_control(void)
 
 void receive_serial(void)
 {    static int command; 
+	
 	if (Serial.available() > 0) 
 	{
 		inByte = Serial.read();

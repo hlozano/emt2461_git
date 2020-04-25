@@ -61,10 +61,6 @@ void door_control(void)
 			door_state = 0;
 			break;
 	}
-
-
-
-
 }
 void timers(void)
 {
@@ -103,3 +99,20 @@ void heartbeat()
 			heartbeat_timer = 0;	//When does the timer get cleared?
 	}
 }
+
+ void door_control(void)
+ {
+ 	//pending implementation
+ }
+ int is_door_closed(void)
+ {
+ 	//pending implementation
+ }
+ int is_door_open(void)
+ {
+ 	//pending implementation
+ }
+ int is_sensor_active(void)
+ {
+ 	//pending implementation
+ }

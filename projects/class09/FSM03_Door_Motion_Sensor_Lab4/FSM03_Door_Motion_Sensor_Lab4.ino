@@ -15,7 +15,6 @@ int door_state;
 #define OPEN_STATE 2
 #define CLOSING_STATE 3
 
-
 const int LED_pin = 13;
 
 int sim_door_position = 0;
@@ -42,7 +41,6 @@ int is_door_open(void);
 
 
 //TIMERS
-
 
 unsigned long timer1 = 0; // timer1 is incremented every 100ms = 0.1s
 unsigned long led_tmr = 0;
