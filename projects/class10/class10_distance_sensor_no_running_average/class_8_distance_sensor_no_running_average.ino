@@ -24,7 +24,7 @@ void setup()
 }
 void loop()
 { 
-    inctimers();
+    timers();
 	if(display_tmr >=5)
 	{// every 0.5 secs
 		display_tmr = 0;
@@ -46,7 +46,7 @@ void print_to_serial()
 }
 
 
-void inctimers(void)
+void timers(void)
 {
 	int i;
 	if(millis() > (ms_runtime + 1))

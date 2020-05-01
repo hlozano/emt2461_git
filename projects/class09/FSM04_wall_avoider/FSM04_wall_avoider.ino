@@ -38,10 +38,10 @@ void robot_control()
 	switch(run_state)
 	{
 		case 0:
+			stop();	
 			if(distance > 20)
 			{
 				run_state = 1;
-
 			}
 			else
 			{//distance is less or equal to 20
@@ -58,43 +58,31 @@ void robot_control()
 					failed_attempts = 0;
 				}
 			}
-			stop();	
 			break;
-			
 		case 1:
-			if(distance >= 20)
-			{
-				forward();
-			}
-			else
+			forward();
+			if(distance < 20)
 			{
 				run_state = 0;				
 			}
 			break;	
-			
+
 		case 2:
-			if(timer1 < 20) // 2.0 seconds (based on 90 degrees rotation) - spinning one wheel only
+			rotate_right();
+			if(timer1 >= 20) // 2.0 seconds (based on 90 degrees rotation) - spinning one wheel only
 			{				
-				rotate_right();
-			}
-			else
-			{
-				stop();
 				run_state = 0;
 			}
 			break;	
-			
 		case 3:
-			if(timer2 < 60)
-			{
-				rotate_left();
-			}
-			else
+			rotate_left();
+			if(timer2 >= 60)
 			{
 				run_state = 0;	
 			}
 			break;
-		default:
+
+    	default:
 			break;		
 	}
 
