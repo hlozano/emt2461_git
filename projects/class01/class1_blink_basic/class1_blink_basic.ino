@@ -2,8 +2,9 @@ void setup()
 { 
   pinMode(13,OUTPUT);
 }
+// loop
 void loop()
-{
+{// loop
    digitalWrite(13,HIGH); // 5V
    delay(1000);
    digitalWrite(13,LOW); // 0V
@@ -27,3 +28,8 @@ int main()
 	}
 }
 */
+
+void another_function(void)
+{
+
+}

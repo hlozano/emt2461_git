@@ -18,7 +18,7 @@ void setup()
 
 void loop()
 {
-  long time_running = 0;
+  long int time_running = 0;
   digitalWrite(LEDpin, HIGH);   // set the LED on
   Serial.println("HIGH");
 	delay(1000);              // wait for a second
