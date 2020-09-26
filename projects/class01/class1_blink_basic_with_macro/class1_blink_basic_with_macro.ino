@@ -44,6 +44,30 @@ void loop()
 
 
 
+/* advanced macros
+c precompiler allows you to 
+use macros in ways that 
+ressemble a function.
+It works as if it is a function
+
+//good macro 
+#define SQUARE(x) ((x)*(x))
+
+the following example is a bad definition of a square
+//bad macro
+#define SQUARE(x) (x * x)
+it is bad because if you have the following code:
+
+square(4+1);
+
+based on the bad macro definition i.e. (x*x)
+square(3+2)   ->  (3+2 * 3+2) -> (3 + 6 + 2) -> (11)
+
+based on the good macro definition i.e. ((x)*(x))
+square(3+2)   ->  ((3+2)*(3+2)) ->  ((5)*(5))  -> (25)
+
+
+
 
 
 
