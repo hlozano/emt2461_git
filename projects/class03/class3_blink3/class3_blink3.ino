@@ -1,11 +1,7 @@
 /*		TIMERS MADE EASY BY HERNAN LOZANO		*/
-
-unsigned long ms_runtime;
-int one_ms_timer;
-
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 
-unsigned long timer1 = 5; // timer1 is incremented every 100ms = 0.1s
+unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 unsigned long timer2; // timer2 is incremented every 100ms = 0.1s
 unsigned long timer3; // timer3 is incremented every 100ms = 0.1s
 
@@ -21,7 +17,6 @@ long int myvar5 = 0;
 long int myvar6 = 0;
 long int myvar7 = 0;
 
-
 const int LED1 = 11;
 const int LED2 = 12;
 const int LED3 = 13;
@@ -31,7 +26,6 @@ void setup()
     pinMode(LED1, OUTPUT);   
     pinMode(LED2, OUTPUT);   
     pinMode(LED3, OUTPUT);   
-
 }
 void loop()
 {
@@ -40,7 +34,6 @@ void loop()
 	flash_led2();//task02
 	flash_led3();//task03
 }
-
 
 
 void flash_led1() 
@@ -79,26 +72,33 @@ void flash_led3()
 
 void timers(void)
 {
+	static unsigned long ms_runtime;
+	static int one_ms_timer;
+
 	if(millis() > ms_runtime)
 	{
 		ms_runtime++;
 		one_ms_timer++;  
 	}
 	else if( millis() < ms_runtime)
+	{
 		ms_runtime = millis();
+		one_ms_timer++;  
+	}
 	//else only executes ~ every 50 days
 
 
 	if(one_ms_timer > 99) // every 100 ms
 	{
-		if(timer1 <4000000000) // if needed if timer 
-							//never clears in more than a month
-		{
-			timer1++;
-			timer2++;
-			timer3++;
-		}
+		timer1++;
+		timer2++;
+		timer3++;
 		one_ms_timer = 0;
+
+		/* extra precaution
+		if(timer1 < 4000000000)
+			timer1++
+		*/
 	}
 }
 
