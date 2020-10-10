@@ -5,7 +5,7 @@ This program illustrates:
   while safety mechanism using safe_count variable
   what happens with for(;;);
 */
-int numbers[10];
+int numbers[10]; // 0,1,2,3,4,5,6,7,8,9 [not]
 void setup()
 {
   int i = 0;
