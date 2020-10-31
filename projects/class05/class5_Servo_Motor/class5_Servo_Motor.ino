@@ -19,3 +19,15 @@ void loop()
 		delay(20); // waits 20ms between servo commands
 	}
 }
+/*
+//example of servo doing the rotating on its own.
+//the motor will rotate from 0 to 180 degrees at its own 
+//speed regardless of the CPU being in delay ("sleep") mode.
+void loop (void)
+{
+		myservo.write(0); // tell servo to go to position in variable 'angle'
+		delay(10000); // waits 10 s between servo commands
+		myservo.write(180); // move servo in opposite direction
+		delay(10000); // waits 10 s between servo commands
+}
+*/

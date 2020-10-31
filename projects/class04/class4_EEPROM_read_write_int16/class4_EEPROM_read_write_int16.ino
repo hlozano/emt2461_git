@@ -11,7 +11,7 @@ byte value = 0;
 * Description
 * Unsigned int variablescan be used for number storage,
 * and store 16 bits (2 bytes). Unlike standard int unsigned int won't 
-* store negative numbers, making their range from 0 to 65536 (2^16 - 1)
+* store negative numbers, making their range from 0 to 65535 (2^16 - 1)
 */
 static union {
     unsigned char mybytes[2];   // 2 - 8 bit bytes (We could use data type "byte")
