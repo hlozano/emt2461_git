@@ -2,11 +2,12 @@
 //DEFINE ALL TIMERS AS UNSIGNED VARIABLES	
 unsigned long timer1 = 0; // timer1 increments every 100ms = 0.1s
 const int USER_LED_OUTPUT = 13;
-const int USER_BUTTON_INPUT = 2;
+const int USER_BUTTON1_INPUT = 2;
+const int USER_BUTTON2_INPUT = 3;
 void setup()
 { // initialize the digital pin as an output.               
 	pinMode(USER_LED_OUTPUT, OUTPUT);     
-	pinMode(USER_BUTTON_INPUT, INPUT);
+	pinMode(USER_BUTTON1_INPUT, INPUT);
 	Serial.begin(9600);
 }
 void loop()
@@ -16,32 +17,24 @@ void loop()
 	timers();
 	
 
-	if(digitalRead(USER_BUTTON_INPUT) == 0)
+	if(button_pressed() == 0)
 	{
 		allow_change_of_state = 1;
 	}
 
 	if(state == 0)	
-	{	if((allow_change_of_state == 1) && (digitalRead(USER_BUTTON_INPUT) == 1) )
-		{	if(timer1 >= 5)
-			{
-				state = 1;
-				allow_change_of_state = 0;
-			}
+	{	if((allow_change_of_state == 1) && (button_pressed() == 1) )
+		{
+			state = 1;	
+			allow_change_of_state = 0;
 		}
-		else
-			timer1 = 0;
 	}
 	else if(state == 1) 
-	{	if((allow_change_of_state == 1) && digitalRead(USER_BUTTON_INPUT) == 1) 
-		{	if(timer1 > 5)
-			{
-				state = 0;
-				allow_change_of_state = 0;
-			}
+	{	if((allow_change_of_state == 1) && (button_pressed() == 1)) 
+		{	
+			state = 0;
+			allow_change_of_state = 0;
 		}
-		else
-			timer1 = 0;
 	}
 	//execute commands based on state	
 	if (state == 1)
@@ -50,10 +43,28 @@ void loop()
 		digitalWrite(USER_LED_OUTPUT, LOW);
 
 }
+
+int button_pressed(void)
+{
+	int result = 0;
+	if((digitalRead(USER_BUTTON1_INPUT) == 1) || (digitalRead(USER_BUTTON2_INPUT) == 1))
+	{
+		if(timer1 >= 5)
+			result=1;
+	}
+	else
+	{
+		timer1 = 0;
+	}
+
+	return result;
+
+} 
+
 void timers(void)
 {
-	unsigned long ms_runtime;
-	int one_ms_timer;
+	static unsigned long ms_runtime;
+	static int one_ms_timer;
 	if(millis() > (ms_runtime + 1))
 	{	ms_runtime = ms_runtime + 1;
 		one_ms_timer++;  

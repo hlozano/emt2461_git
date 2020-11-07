@@ -52,8 +52,8 @@ void loop()
 }
 void timers(void)
 {
-	unsigned long ms_runtime;
-	int one_ms_timer;
+	static unsigned long ms_runtime;
+	static int one_ms_timer;
 	if(millis() > (ms_runtime + 1))
 	{	ms_runtime = ms_runtime + 1;
 		one_ms_timer++;  
