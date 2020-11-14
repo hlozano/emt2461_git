@@ -10,7 +10,7 @@
  
  struct LED newLED2;
 
-void setup() 
+void setup()  
 {                
   newLED1.addr = 13;
   pinMode(newLED1.addr, OUTPUT);   

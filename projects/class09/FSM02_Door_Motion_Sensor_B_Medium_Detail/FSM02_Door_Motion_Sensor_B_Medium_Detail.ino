@@ -13,7 +13,6 @@ const int OPENING_STATE = 1;
 const int OPEN_STATE = 2;
 const int CLOSING_STATE = 3;
 
-
 const int LED1 = 13;
 
 int door_state = 0;
@@ -26,6 +25,7 @@ int door_state = 0;
 
  void motor_close(void); // CW OR CCW
  void motor_open(void);
+ void motor_stop(void);
 
 
 
@@ -134,6 +134,11 @@ void flash_led1()
 
  }// CW OR CCW
  void motor_open(void)
+ {
+
+
+ }
+ void motor_stop(void)
  {
 
 

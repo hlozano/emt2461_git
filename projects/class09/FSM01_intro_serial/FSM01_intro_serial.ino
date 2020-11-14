@@ -28,14 +28,16 @@ void motor_run_up(void);
 void motor_run_dn(void);
 
 
-void turn_on(void)
+void turn_on_leds(void)
 {
   digitalWrite(up_led_pin,HIGH);
+  digitalWrite(dn_led_pin,HIGH);
 }
 
-void turn_off(void)
+void turn_off_leds(void)
 {
   digitalWrite(up_led_pin,LOW);
+  digitalWrite(dn_led_pin,LOW);
 }
 
 
@@ -65,43 +67,30 @@ void elevator_control(void)
 	switch(state)
 	{
 		case 0: //STOP
+			motor_stop();
+			turn_off_leds();		
 			if(goup_cmd == 1)
 				state = 1;
 			else if(godn_cmd == 1)
 				state = 2;
-			else
-			{
-				motor_stop();
-				turn_off();
-			}
 			break;	
-	
 		case 1: // RUN UP STATE 
+			motor_run_up();
+			flash_up_led();
 			if(stop_cmd == 1)
 				state = 0;
-			else
-			{
-				motor_run_up();
-				flash_up_led();
-			}
 			break;	
-	
 		case 2: // RUN DOWN STATE
+			motor_run_dn();
+			flash_dn_led();
 			if(stop_cmd == 1)
 				state = 0;
-			else
-			{
-				motor_run_dn();
-				flash_dn_led();
-			}
 			break;	
 		default: 
 			state = 0;
 			break;
 	}
 	clear_commands();	
-
-	
 }
 
 void receive_serial(void)
@@ -144,19 +133,19 @@ void transmit_serial(void)
 	printing_tmr = 0;
 
 	switch (state)
-		{
-			case 0: 
-				Serial.println("Elevator stopped");
-				break;
-			case 1: 
-				Serial.println("Elevator going up");
-				break;
-			case 2: 
-				Serial.println("Elevator going down");
-				break;
-			default:
-				Serial.println("Unrecognized state :/");
-		}
+	{
+		case 0: 
+			Serial.println("Elevator stopped");
+			break;
+		case 1: 
+			Serial.println("Elevator going up");
+			break;
+		case 2: 
+			Serial.println("Elevator going down");
+			break;
+		default:
+			Serial.println("Unrecognized state :/");
+	}
 
 }
 

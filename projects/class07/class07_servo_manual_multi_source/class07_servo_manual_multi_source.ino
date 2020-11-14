@@ -31,7 +31,7 @@ void motor_manual_control(void)
 		{
 		  pos--;
 		}
-		  Serial.println(pos);
+		Serial.println(pos);
     }
     myservo.write(pos);              // tell servo to go to position in variable 'pos'  
 }

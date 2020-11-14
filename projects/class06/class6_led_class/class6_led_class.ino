@@ -21,7 +21,7 @@
 LED::LED(int pin)
 {
 	addr = pin;
-	ledstate = 0;
+	//ledstate = 0;
 	pinMode(addr, OUTPUT); 	
 	turnoff();
 }
@@ -59,6 +59,6 @@ void setup()
 
 void loop() 
 {
-	newLED1.toogle();
+	newLED1.toggle();
 	delay(1000);              
 }  
