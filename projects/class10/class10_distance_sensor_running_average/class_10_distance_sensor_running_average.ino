@@ -32,9 +32,9 @@ void loop()
 	if(ping_tmr >= 1)
 	{//every 100 ms
 		ping_tmr = 0;
-		DistanceIn = sonar.ping_in();
+		DistanceCm = sonar.ping_cm();
 //		D_in_average = (        OLD TOTAL          -  OLD average + New Reading)/nmb_samples;
-		D_in_average = (nmb_samples * D_in_average - D_in_average + DistanceIn)/nmb_samples;
+		D_in_average = (nmb_samples * D_in_average - D_in_average + DistanceCm)/nmb_samples;
 		//D_in_average = (int)((float)(nmb_samples * D_in_average - D_in_average + DistanceIn)/(float)nmb_samples);
 		// This type casting allows me to keep some more accurate values
 	}
