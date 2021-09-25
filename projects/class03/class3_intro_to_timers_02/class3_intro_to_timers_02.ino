@@ -1,13 +1,12 @@
 /*		TIMERS MADE EASY BY HERNAN LOZANO  		*/
-unsigned long ms_runtime = 0;
-unsigned int one_ms_timer;
+
 //DEFINE ALL TIMERS AS UNSIGNED AS VARIABLES	
 unsigned long LED1_timer = 0; // LED1_timer is incremented every 100ms = 0.1s
 unsigned long LED2_timer = 0; // LED2_timer is incremented every 100ms = 0.1s
 unsigned long LED3_timer = 0; // LED3_timer is incremented every 100ms = 0.1s
 unsigned long debug_print_tmr = 0;
 //review on data types
-bool myboolvar = FALSE; // same as myboolvar= 0;
+bool myboolvar = 0; // same as myboolvar= 0;
 
 void flash_LED1_pin(void);
 void flash_LED2_pin(void);
@@ -21,7 +20,8 @@ void setup()
 {                
     pinMode(LED1_pin, OUTPUT);   
     pinMode(LED2_pin, OUTPUT);   
-    pinMode(LED3_pin, OUTPUT);   
+    pinMode(LED3_pin, OUTPUT); 
+    Serial.begin(9600);  
 }
 void loop()
 {
@@ -73,7 +73,8 @@ void flash_LED3_pin()
 }
 void timers(void)
 {
-	int i;
+	static unsigned long ms_runtime = 0;
+	static unsigned int one_ms_timer;
 	if(millis() > ms_runtime)
 	{	//ms_runtime = ms_runtime + 1;
 		ms_runtime++;
