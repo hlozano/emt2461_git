@@ -12,12 +12,15 @@ void setup()
   Serial.begin(9600);
   while( i < 10) // while (boolean)
   {
-    numbers[i] = i;
-    Serial.println(i);
-    delay(500);
+    numbers[i] = i+11;
+    Serial.print("numbers[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.println(i+11);    
+    delay(200);
     i++;
   }
-  Serial.print("done with my 1st while loop");
+  Serial.println("done with my 1st while loop");
 }
 void loop()
 {
@@ -34,9 +37,9 @@ void loop()
     i++;
   }
   Serial.print("done with my 2nd while loop");
-  //while(1); // lock program forever
+  while(1); // lock program forever
   //while(TRUE); // lock program forever
-  while(2); // lock program forever
+  //while(2); // lock program forever
 }
 
 

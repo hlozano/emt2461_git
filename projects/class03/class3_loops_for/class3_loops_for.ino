@@ -15,7 +15,7 @@ void setup()
 {
 	int i=0; // if we use a local var "i", the global "i" is not used here
     Serial.begin(9600);
-	for (i=0; i <= 10; i++)
+	for (i=1; i <= 10; i++)
 	{
 	  Serial.println(i);
 	  delay(10);
