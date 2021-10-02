@@ -1,6 +1,6 @@
-/*		
-		class4_EEPROM_read_write.c
-		Edited by H. Lozano
+/*    
+    class4_EEPROM_read_write.c
+    Edited by H. Lozano
  
  EEPROM Read/Write
  -----------------
@@ -11,7 +11,7 @@
  has been powered up. It works well up to 255 (one byte).
  */
 
-#include <EEPROM.h>	//  <------- some options require adding libraries to your projects
+#include <EEPROM.h> //  <------- some options require adding libraries to your projects
 
 // start reading from the first byte (address 0) of the EEPROM
 int address = 0;
@@ -19,10 +19,18 @@ byte myvariable = 0;
 
 void setup()
 {
+  Serial.begin(9600);
+ 
   myvariable = EEPROM.read(address);
+  Serial.print("at first memory location ");
+  Serial.print(address);
+  Serial.print("   contains ");
+  Serial.print(myvariable);
+  Serial.println();
   myvariable++;
   EEPROM.write(address,myvariable);
-  Serial.begin(9600);
+  Serial.println("then...");
+  delay(2000);
 }
 void loop()
 {
@@ -34,7 +42,7 @@ void loop()
   Serial.print("   contains ");
   Serial.print(myvariable);
   Serial.println();
-	//for(;;);
+  //for(;;);
   while(1)
   {
   
