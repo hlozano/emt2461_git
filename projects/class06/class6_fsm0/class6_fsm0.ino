@@ -22,7 +22,8 @@ void loop()
 	}
 
 	if(state == 0)	
-	{	if((allow_change_of_state == 1) && (digitalRead(USER_BUTTON_INPUT) == 1) )
+	{	if((allow_change_of_state == 1)         && 
+		   (digitalRead(USER_BUTTON_INPUT) == 1)   )
 		{	if(timer1 >= 5)
 			{
 				state = 1;
@@ -33,7 +34,8 @@ void loop()
 			timer1 = 0;
 	}
 	else if(state == 1) 
-	{	if((allow_change_of_state == 1) && digitalRead(USER_BUTTON_INPUT) == 1) 
+	{	if((allow_change_of_state == 1) && 
+		   (digitalRead(USER_BUTTON_INPUT) == 1)) 
 		{	if(timer1 > 5)
 			{
 				state = 0;
@@ -43,6 +45,7 @@ void loop()
 		else
 			timer1 = 0;
 	}
+	
 	//execute commands based on state	
 	if (state == 1)
 		digitalWrite(USER_LED_OUTPUT, HIGH); 

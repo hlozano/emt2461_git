@@ -36,26 +36,6 @@ void light_control()
 {
 	static int light_state;
 
-	//STATE MACHINE USING IF AND ELSE IF STATEMENTS
-	// if(light_state == 0)
-	// {
-	// 	turn_light_off();
-	// 	if(button_pressed() == 1)
-	// 	{
-	// 		light_timeout_timer = 0;
-	// 		light_state = 1;
-	// 	}
-	// }
-	// else if (light_state == 1)
-	// {
-	// 	turn_light_on();
-	// 	if(light_timeout_timer>36000)
-	// 	{
-	// 		light_state = 0;
-	// 	}
-	// }
-
-
 
 
 	switch(light_state)
@@ -68,7 +48,9 @@ void light_control()
 			break;
 		case 1:				//ON
 			turn_light_on();
-			if(light_timeout_timer >= 36000)
+			//if(light_timeout_timer >= 36000)// one hour
+			if((button_pressed() == 1)     ||
+			   (light_timeout_timer >= 200)   ) // 20 seconds
 				light_state = 0;
 			break;
 		default:
@@ -80,10 +62,18 @@ void light_control()
 
 int button_pressed(void)
 {
-	if(digitalRead(button_pin) == 1) 
+	static bool allow_button_to_be_read;
+	
+	if(digitalRead(button_pin) == 0)
+		 allow_button_to_be_read = 1;
+
+	if((digitalRead(button_pin) == 1) && (allow_button_to_be_read == 1 ))
 	{ 
-		if(timer1 > 10) // debounce for one second
+		if(timer1 > 5) // debounce for half
+		{
+			allow_button_to_be_read = 0;
 			return 1;
+		}
 	}
 	else
 	{
