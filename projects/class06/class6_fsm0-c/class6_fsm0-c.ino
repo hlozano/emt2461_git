@@ -1,9 +1,15 @@
 
 //DEFINE ALL TIMERS AS UNSIGNED VARIABLES	
 unsigned long timer1 = 0; // timer1 increments every 100ms = 0.1s
+unsigned long print_timer = 0; // timer1 increments every 100ms = 0.1s
+
 const int USER_LED_OUTPUT = 13;
 const int USER_BUTTON1_INPUT = 2;
 const int USER_BUTTON2_INPUT = 3;
+
+void serial_debug(void);
+void light_control(void);
+
 void setup()
 { // initialize the digital pin as an output.               
 	pinMode(USER_LED_OUTPUT, OUTPUT);     
@@ -12,11 +18,16 @@ void setup()
 }
 void loop()
 {	//run loop forever
+
+	timers();
+	light_control();
+	serial_debug();
+}
+
+void light_control(void)
+{
 	static int state;
 	static bool allow_change_of_state;
-	timers();
-	
-
 	if(button_pressed() == 0)
 	{
 		allow_change_of_state = 1;
@@ -40,14 +51,27 @@ void loop()
 	if (state == 1)
 		digitalWrite(USER_LED_OUTPUT, HIGH); 
 	else if (state == 0)
-		digitalWrite(USER_LED_OUTPUT, LOW);
+		digitalWrite(USER_LED_OUTPUT, LOW);	
+}
 
+void serial_debug(void)
+{
+	if(print_timer >= 5)	
+	{
+		// Serial.print(print_timer);
+		// Serial.print("    ");
+		Serial.println(timer1);
+		// Serial.print("    ");
+		// Serial.println(timeout_timer);	
+		print_timer = 0;
+	}
 }
 
 int button_pressed(void)
 {
 	int result = 0;
-	if((digitalRead(USER_BUTTON1_INPUT) == 1) || (digitalRead(USER_BUTTON2_INPUT) == 1))
+	if((digitalRead(USER_BUTTON1_INPUT) == 1) || 
+	   (digitalRead(USER_BUTTON2_INPUT) == 1))
 	{
 		if(timer1 >= 5)
 			result=1;
@@ -58,7 +82,6 @@ int button_pressed(void)
 	}
 
 	return result;
-
 } 
 
 void timers(void)
@@ -73,6 +96,7 @@ void timers(void)
 		ms_runtime = millis();
 	if(one_ms_timer > 99)
 	{	timer1++;
+		print_timer++;
 		one_ms_timer = 0;
 	}
 }
