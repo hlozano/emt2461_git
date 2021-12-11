@@ -112,13 +112,13 @@ void motor_control(void)
 	switch(door_state)
 	{
 		case CLOSED_STATE://door_state = 0 -> door is closed
-			 myservo.write(89); 
+			 myservo.write(90); 
 			break;
 		case OPENING_STATE://door_state = 1 -> door is opening 
 			 myservo.write(180); 
 			break;
 		case OPEN_STATE://door_state = 2 -> door is open
-			 myservo.write(89); 
+			 myservo.write(90); 
 			break;
 		case CLOSING_STATE://door_state = 3 -> door is closing
 			 myservo.write(0); 
@@ -179,21 +179,21 @@ void door_simulator(void)
 	}
 		if(sim_door_position_tmr >= 1) // how often the sim_door_position changes
 		{
-		  if(door_state == 3)
+		  if(door_state == OPENING_STATE)
 		  {//opening
 			if(sim_door_position>0)
 			 sim_door_position--;
 		  }
-		  else if(door_state == 1)
+		  else if(door_state == CLOSING_STATE)
 		  {//closing
 			if(sim_door_position<100)
 			 sim_door_position++;
 		  }
-		  else if(door_state == 0)
+		  else if(door_state == CLOSED_STATE)
 		  {
 			sim_door_position = 0;
 		  }
-		  else if(door_state == 2)
+		  else if(door_state == OPEN_STATE)
 		  {
 			sim_door_position = 100;
 		  }

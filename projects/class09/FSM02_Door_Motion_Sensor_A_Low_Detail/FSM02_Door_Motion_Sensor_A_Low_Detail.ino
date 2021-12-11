@@ -1,14 +1,9 @@
-unsigned long ms_runtime;
-unsigned int one_ms_timer;
-unsigned int timer1;
+unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 unsigned int heartbeat_timer;
-
 
 const int LED1 = 13;
 
 int door_state = 0;
-
-unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
  
  void door_control(void);
  int is_door_closed(void);
@@ -53,7 +48,9 @@ void door_control(void)
 			break;
 		case 3: // closing
 			if(is_door_closed() == 1)
+			{
 				door_state = 0;
+			}
 			if(is_sensor_on() == 1)
 			{
 				door_state = 1; // go to opening state
@@ -66,7 +63,8 @@ void door_control(void)
 }
 void timers(void)
 {
-	int i;
+	static unsigned long ms_runtime;
+	static unsigned int one_ms_timer;
 	if(millis() > (ms_runtime + 1))
 	{
 		ms_runtime = ms_runtime + 1;

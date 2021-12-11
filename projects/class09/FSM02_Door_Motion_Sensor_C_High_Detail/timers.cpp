@@ -1,9 +1,6 @@
 #import <Arduino.h>
 #include "doorlimits.h"
 
-unsigned long ms_runtime = 0;
-unsigned int one_ms_timer = 0;
-
 unsigned long timer1 = 0; // timer1 is incremented every 100ms = 0.1s
 unsigned long led_tmr = 0;
 unsigned long sensor_tmr = 0;
@@ -15,7 +12,10 @@ void timers(void);
 
 void timers(void)
 {
+	static unsigned long ms_runtime = 0;
+	static unsigned int one_ms_timer = 0;
 	int i;
+
 	if(millis() > (ms_runtime + 1))
 	{
 		ms_runtime = ms_runtime + 1;

@@ -20,9 +20,9 @@ void rotate_right(void);     //motor functions
 void rotate_left(void);      //motor functions
 void reverse(void);        //motor functions
 void timers(void);        // timers routine for system 
-void hearbeat_led(void);	//blink led
+void heartbeat_led(void);	//blink led
 
-void hearbeat_led(void)
+void heartbeat_led(void)
 {
 	if(heartbeat_timer<1)			//heartbeat_timer is a one second timer
 		digitalWrite(LED1,HIGH); 
@@ -42,7 +42,7 @@ void setup()
 void loop()
 {
 	timers();
-	hearbeat_led(); // diagnostics (flash every second)
+	heartbeat_led(); // diagnostics (flash every second)
 	distance_sensor_control_1();
 	robot_control();
 }

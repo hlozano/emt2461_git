@@ -7,7 +7,7 @@
  struct LED_t //name of the template used for this structure
  {
    int addr;
-   int dir; // 0 for input 1 for output
+   int state; 
  } ;
 
 
@@ -20,14 +20,18 @@ void setup()
   // Pin 13 has an LED connected on most Arduino boards:
   
   newLED1.addr = 13;
-  pinMode(newLED1.addr, OUTPUT);   
-  newLED1.dir = 1;  
+  pinMode(newLED1.addr, OUTPUT);  
+  digitalWrite(newLED1.addr, LOW);    // set the LED off 
+  newLED1.state = 0;  
 }
 
 void loop() 
 {
-  digitalWrite(newLED1.addr , HIGH);   // set the LED on
+  digitalWrite(newLED1.addr, HIGH);   // set the LED on
+  newLED1.state = 1;  
   delay(2000);              // wait for a second
-  digitalWrite(newLED1.addr , LOW);    // set the LED off
+
+  digitalWrite(newLED1.addr, LOW);    // set the LED off
+  newLED1.state = 0;  
   delay(2000);              // wait for a second
 }

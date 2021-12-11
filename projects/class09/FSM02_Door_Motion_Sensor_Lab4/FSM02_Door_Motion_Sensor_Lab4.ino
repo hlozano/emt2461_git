@@ -250,6 +250,13 @@ void serial_debugger(void)
 	prev_time_to_block = time_to_block;	
 }
 
+
+CLOSED_STATE
+OPENING_STATE
+OPEN_STATE
+CLOSING_STATE
+
+
 void door_simulator(void)
 {
 
@@ -271,21 +278,21 @@ void door_simulator(void)
 	}
     if(sim_door_position_tmr >= 1) // how often the sim_door_position changes
     {
-      if(door_state == 3)
+      if(door_state == OPENING_STATE)
       {//opening
         if(sim_door_position>0)
           sim_door_position--;
       }
-      else if(door_state == 1)
+      else if(door_state == CLOSING_STATE)
       {//closing
         if(sim_door_position<100)
           sim_door_position++;
       }
-      else if(door_state == 0)
+      else if(door_state == CLOSED_STATE)
       {
         sim_door_position = 0;
       }
-      else if(door_state == 2)
+      else if(door_state == OPEN_STATE)
       {
         sim_door_position = 100;
       }

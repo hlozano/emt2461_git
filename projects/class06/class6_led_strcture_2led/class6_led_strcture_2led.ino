@@ -1,32 +1,40 @@
 /*		structures */
- struct LED 
+ struct LED_t 
  {
    int addr;
-   int dir; // 0 for input 1 for output
+   int state; // 0 for low 1 for high
   
  } ;
  
- struct LED newLED1;
- 
- struct LED newLED2;
+struct LED_t newLED1;
+struct LED_t newLED2;
+
 
 void setup()  
 {                
   newLED1.addr = 13;
-  pinMode(newLED1.addr, OUTPUT);   
-  newLED1.dir = 1;  
+  pinMode(newLED1.addr, OUTPUT);  
+  digitalWrite(newLED1.addr , LOW);    // set the LED off
+  newLED1.state = 0;  
   
   newLED2.addr = 14;
   pinMode(newLED2.addr, OUTPUT);   
-  newLED2.dir = 1;  
+  digitalWrite(newLED1.addr , LOW);    // set the LED off
+  newLED2.state = 0;  
 }
 
 void loop() 
 {
   digitalWrite(newLED1.addr , HIGH);   // set the LED on
+  newLED1.state = 1; 
   digitalWrite(newLED2.addr , LOW);    // set the LED off
+  newLED2.state = 0; 
   delay(1000);              // wait for a second
-  digitalWrite(newLED2.addr , LOW);    // set the LED off
-  digitalWrite(newLED1.addr , HIGH);   // set the LED on
+  
+  digitalWrite(newLED1.addr , LOW);    // set the LED off
+  newLED1.state = 0; 
+  digitalWrite(newLED2.addr , HIGH);   // set the LED on
+  newLED2.state = 1; 
+  
   delay(1000);              // wait for a second
 }

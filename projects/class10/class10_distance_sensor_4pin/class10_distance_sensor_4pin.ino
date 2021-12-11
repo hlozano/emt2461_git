@@ -1,7 +1,3 @@
-/*		TIMERS MADE EASY BY HERNAN LOZANO		*/
-
-
-
 #include<NewPing.h>
 
 #define  TRIGGER_PIN  8
