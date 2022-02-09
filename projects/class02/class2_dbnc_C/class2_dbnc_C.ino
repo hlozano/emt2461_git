@@ -1,5 +1,4 @@
-unsigned long ms_runtime;
-int one_ms_timer;
+
 
 unsigned long button_dbnc_tmr; // button_dbnc_tmr is incremented every 100ms = 0.1s
 //<---- Define new timer here
@@ -40,6 +39,8 @@ void loop()
 */
 void timers(void)
 {
+	static unsigned long ms_runtime;
+	static int one_ms_timer;
 	if(millis() > ms_runtime)
 	{
 		ms_runtime = ms_runtime + 1;

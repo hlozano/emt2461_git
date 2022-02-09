@@ -15,7 +15,7 @@
   {
     unsigned long time = 1;// this wont interfere with the variable defined in loop
     Serial.begin(9600);
-	Serial.println(time); // this will print '1' because it is a local scope
+	  Serial.println(time); // this will print '1' because it is a local scope
   }
   void loop()
   {

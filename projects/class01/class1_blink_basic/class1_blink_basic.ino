@@ -18,7 +18,8 @@ int main()
 {
 
 }
-//arduino did this to make things 'easier' on programmers
+//arduino did this to make things 
+//'easier' on programmers
 int main()
 {
 	setup();

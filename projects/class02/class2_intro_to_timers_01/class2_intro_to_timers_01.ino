@@ -26,7 +26,6 @@ void loop()
         Serial.print("millis() returns  ");
         Serial.println(millis());
 
-
 		counter = 0;
 	}
 }
