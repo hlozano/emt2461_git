@@ -76,7 +76,7 @@ void timers(void)
 	static int one_ms_timer;
 
 	if(millis() > ms_runtime)
-	{
+	{//code falls in this if statement every 1 ms
 		ms_runtime++;
 		one_ms_timer++;  
 	}
