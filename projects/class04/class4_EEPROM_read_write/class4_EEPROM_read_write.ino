@@ -22,7 +22,7 @@ void setup()
   Serial.begin(9600);
  
   myvariable = EEPROM.read(address);
-  Serial.print("at first memory location ");
+  Serial.print("at first EEPROM memory location ");
   Serial.print(address);
   Serial.print("   contains ");
   Serial.print(myvariable);
@@ -49,3 +49,11 @@ void loop()
   };
   
 }
+
+/*  1
+  0b 1000 1111
+ +0b 1100 0000
+ -------------
+     0100 1111
+
+*/
