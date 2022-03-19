@@ -19,8 +19,10 @@ byte myvariable = 0;
 
 void setup()
 {
+   // added delay so the first time we program
+   // the board we see the sequence play out 
+  delay(2000);
   Serial.begin(9600);
- 
   myvariable = EEPROM.read(address);
   Serial.print("at first EEPROM memory location ");
   Serial.print(address);

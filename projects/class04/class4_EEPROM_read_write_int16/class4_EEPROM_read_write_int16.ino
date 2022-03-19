@@ -18,27 +18,33 @@ static union {
     unsigned int myinteger;       // 1 - 16 bit word
   };
 
+//uinsigned int another_integer;
+
 void setup()
-{   //if data is initialized we will have a 56 in first location (our choice)
+{   //if data is initialized we will have a 99 in first location (our choice)
+
+   // added delay so the first time we program
+   // the board we see the sequence play out 
+  delay(2000);
   Serial.begin(9600);
   ee_address = 0;
   value = EEPROM.read(ee_address);
   if(value != 99) // Memory was not initialized
   {
-    Serial.println("data was not initialized");
+    Serial.println("EEPROM was not initialized");
     EEPROM.write(ee_address,99); // make sure I leave a mark knowing I was here
     myinteger = 30000; // 30000
-    ee_address++;
+    ee_address = 1;
     EEPROM.write(ee_address,mybytes[0]);
-    ee_address++;
+    ee_address = 2;
     EEPROM.write(ee_address,mybytes[1]);
 
-    Serial.println("data was NOT initialized. We saved a 99 in ee_adress 0");
+    Serial.println("EEPROM was NOT initialized. We saved a 99 in ee_adress 0");
     while(1);//intentional
   }
   else
   {
-    Serial.println("data was already initialized. We read a 99 in ee_adress 0");  
+    Serial.println("EEPROM was already initialized. We read a 99 in ee_adress 0");  
   }
 }
 

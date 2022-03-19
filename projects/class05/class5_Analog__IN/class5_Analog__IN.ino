@@ -1,6 +1,6 @@
 /* read analog input sample program*/
 
-int analogPin = 3;     // potentiometer wiper (middle terminal) connected to analog pin 3
+int analogPin = A3;     // potentiometer wiper (middle terminal) connected to analog pin 3
                        // outside leads to ground and +5V
 int val = 0;           // variable to store the value read
 

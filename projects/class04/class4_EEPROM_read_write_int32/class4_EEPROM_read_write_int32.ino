@@ -15,7 +15,7 @@ Unsigned long variables are extended size variables for number storage,
 and store 32 bits (4 bytes). Unlike standard longs unsigned longs won't 
 store negative numbers, making their range from 0 to 4,294,967,295 (2^32 - 1)
 */
- union {
+ static union {
 		unsigned char mybytes[4];		// 4- 8 bit bytes (I could have used data type "byte")
 		unsigned long int mylongint;			// 1-32 bit word
 	};
@@ -30,6 +30,9 @@ static union {
 
 void setup()
 {		//if data is initialized we will have a 56 in first location (our choice)
+   // added delay so the first time we program
+   // the board we see the sequence play out 
+  delay(2000);	
 	Serial.begin(9600);
 	ee_address = 0;
 	value = EEPROM.read(ee_address);
