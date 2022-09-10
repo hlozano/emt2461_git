@@ -23,11 +23,11 @@
 
 
 //using a macro
-#define LED_pin 13
-#define LED_Toggle_Delay 1000
+// #define LED_pin 13
+// #define LED_Toggle_Delay 1000
 //OR a definition
-// const int LED_pin = 13;
-// const int LED_Toggle_Delay = 1000;
+const int LED_pin = 3;
+const int LED_Toggle_Delay = 1000;
 
 void setup()
 { 
