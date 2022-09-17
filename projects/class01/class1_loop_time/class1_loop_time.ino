@@ -41,20 +41,30 @@
   void myfunction()
   {// this is a really pointless function that executes N insructions
     int i;
-    int N = 100;//<---- play with this number
+    int N = 1;//<---- play with this number
     for(i = 1;i<=N;i++)
+    {
      // temp_integer = temp_integer + 1;//compiler too smart for this
-      temp_integer = temp_integer + temp_integer % i;
+      temp_integer = temp_integer + temp_integer % i;      
+    }
   }
 
 
   /*
   when this program is run using N iterations inside myfunction() it yields a loop time of____
-
+  ARDUINO UNO
   N     Loop time
   0001    55 us
-  0010    144 us
+  0010    14 us
   0100    1418 us ~ 1.4 ms
+  1000    14214 us ~ 14.214 ms
+
+
+  ARDUINO MEGA
+  N     Loop time
+  0001    55 us
+  0010    148 us
+  0100    1443 us ~ 1.4 ms
   1000    14214 us ~ 14.214 ms
 
 

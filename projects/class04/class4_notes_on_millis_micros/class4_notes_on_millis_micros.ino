@@ -14,27 +14,20 @@ void setup()
   // Pin 13 has an LED connected on most Arduino boards:
   pinMode(LEDpin, OUTPUT);   
   Serial.begin(9600);  // you need to pass on the BAUD rate
-
-  /*defition from google
-  Baud, or baud rate, is used to describe the maximum oscillation 
-  rate of an electronic signal. For example, if a signal 
-  changes (or could change) 1200 times in one second, 
-  it would be measured at 1200 baud.
-  */
 }
 
 void loop()
 {
-  int time_running = 0;
+  long time_running = 0;
   digitalWrite(LEDpin, HIGH);   // set the LED on
-  Serial.println("LED is HIGH");
-	delay(1000);              // wait for a second
-	digitalWrite(LEDpin, LOW);    // set the LED off
-  Serial.println("LED is LOW");
-	delay(1000);              // wait for a second
-  time_running = millis(); // similar "micros()"
+  Serial.println("HIGH");
+  delay(1000);              // wait for a second
+  digitalWrite(LEDpin, LOW);    // set the LED off
+  Serial.println("LOW");
+  delay(1000);              // wait for a second
+  time_running = millis();
   Serial.println(time_running);// time that has passed 
-							 //up to the this point
+               //up to the this point
 }
 
 

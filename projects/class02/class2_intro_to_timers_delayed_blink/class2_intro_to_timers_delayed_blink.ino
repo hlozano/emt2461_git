@@ -1,4 +1,8 @@
-unsigned long button_dbnc_tmr; // button_dbnc_tmr is incremented every 100ms = 0.1s
+unsigned long button_dbnc_tmr;	// button_dbnc_tmr is incremented every 100ms = 0.1s
+unsigned long blinking_tmr;		// blinking_tmr is incremented every 100ms = 0.1s
+unsigned long delay_blink_tmr;	// delay_blink_tmr is incremented every 100ms = 0.1s
+
+
 //<---- Define new timer here
 
 void timers(void);
@@ -14,27 +18,26 @@ const int buttonPin = 2;
 void setup()
 {  // initialize the digital pin as an output.
 	pinMode(LED1_pin, OUTPUT);     
-	pinMode(buttonPin, INPUT);
 }
 void loop()
 {
-    timers();
-	if(digitalRead(buttonPin) == 1) 
-	{  // 10 times 0.100 s( 100ms) = 1 second
-		if(button_dbnc_tmr >= 10) // [0,1,2,3,4,5,6,7,8,9] -> 10 times 100 ms (ten iterations of 100ms = 1 sec)
+	timers();
+	if(delay_blink_tmr >= 50)
+	{//delay first reaction by 5 seconds
+		//THEN blink 1 sec on and 1 sec off
+		if(blinking_tmr < 10) // [0,1,2,3,4,5,6,7,8,9] -> 10 times 100 ms (ten iterations of 100ms = 1 sec)
 			digitalWrite(LED1_pin, HIGH); 
+		else if (blinking_tmr < 20)
+			digitalWrite(LED1_pin, LOW);
+		else
+			blinking_tmr = 0;
 	}
 	else
 	{
-		digitalWrite(LED1_pin, LOW);
-		button_dbnc_tmr = 0;		// clear timer (RESETTING THE TIMER TO ZERO)
-	} 
+		blinking_tmr = 0;
+	}
 }
-/*
-	Opposite to what happened in the previous version of this program, here the
-	length of loop time will not have any repercussion on the time of the debounce.
-	The loop time will have to go beyond a 1ms average before the performance of this program is affected.
-*/
+
 void timers(void)
 {
 	static unsigned long ms_runtime = 0;
@@ -50,6 +53,8 @@ void timers(void)
 	if(one_ms_timer > 99) // one_ms_tmr .. 0,1,2,3,4,5....99,0
 	{//come in here every 100 ms
 		button_dbnc_tmr++;
+		blinking_tmr++;
+		delay_blink_tmr++;
 		//<---- Add new timer here
 		one_ms_timer = 0;
 	}
