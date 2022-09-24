@@ -19,12 +19,10 @@ void flash_led1()
 {
 	if(LED1_tmr<10)			//first 10 (10 times 100 ms = 1s)
 		digitalWrite(LED1,HIGH); 
-	else
-	{
+	else if(LED1_tmr < 20) 
 		digitalWrite(LED1,LOW);
-		if(LED1_tmr>=20) //(between 10 and 20 - another 1 s)
-			LED1_tmr = 0;	//When does the timer get cleared?
-	}
+	else
+		LED1_tmr = 0;	//When does the timer get cleared?
 }
 void timers(void)
 {

@@ -9,7 +9,7 @@ const int buttonPin = 2;
 	for an oscilloscope reading of an input being activated.
 */
 void setup()
-{  // initialize the digital pin as an output.                
+{                  
 	pinMode(LED1,OUTPUT);     
 	pinMode(buttonPin, INPUT);
 }
@@ -25,6 +25,31 @@ void loop()
 		digitalWrite(LED1, LOW);
 	}
 }
+
+/*
+
+//If using INPUT_PULLUP configuration
+
+const int LED1 = 13;
+const int buttonPin = 2;
+#define PRESSED 0
+
+void setup()
+{  	pinMode(LED1,OUTPUT);     
+	pinMode(buttonPin, INPUT_PULLUP);
+}
+void loop()
+{   if(digitalRead(buttonPin) == PRESSED) 
+	{								
+		digitalWrite(LED1, HIGH); 
+	}	
+	else
+	{
+		digitalWrite(LED1, LOW);
+	}
+}
+
+*/
 
 
 

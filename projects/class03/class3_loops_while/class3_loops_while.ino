@@ -16,7 +16,7 @@ void setup()
     Serial.print("numbers[");
     Serial.print(i);
     Serial.print("] = ");
-    Serial.println(i+11);    
+    Serial.println(numbers[i]);    
     delay(200);
     i++;
   }
