@@ -1,5 +1,5 @@
 //lab1 - program#1
-#define BUTTON_PRESSED 0
+#define BUTTON_PRESSED 0 // input pullup reads 0 when pressed
 #define BUTTON_RELEASED 1
 
 const int USER_LED_OUTPUT = 13;

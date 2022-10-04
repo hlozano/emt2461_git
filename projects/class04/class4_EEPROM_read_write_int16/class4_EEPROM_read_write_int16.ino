@@ -18,7 +18,13 @@ static union {
     unsigned int myinteger;       // 1 - 16 bit word
   };
 
-//uinsigned int another_integer;
+//unsigned int another_integer;
+
+// MAP OF EEPROM LOCATIONS
+// ADD    data
+// 0      bookmark or initializer
+// 1      half of my number
+// 2      half of my number 
 
 void setup()
 {   //if data is initialized we will have a 99 in first location (our choice)
@@ -39,7 +45,7 @@ void setup()
     ee_address = 2;
     EEPROM.write(ee_address,mybytes[1]);
 
-    Serial.println("EEPROM was NOT initialized. We saved a 99 in ee_adress 0");
+    Serial.println("EEPROM was NOT initialized. We saved a 99 in ee_adress 0, and 30,000 as my counter");
     while(1);//intentional
   }
   else
@@ -60,11 +66,11 @@ void loop()
 
   myinteger++; // SAME AS THE OTHER PROGRAM WHEN WE DID ... value++
 
-    Serial.print("initialization value    ");
+  Serial.print("initialization value    ");
   Serial.print(value, DEC);
   Serial.println();
   
-  Serial.print("stored value         ");
+  Serial.print("stored value changed to      ");
   Serial.print(myinteger, DEC);
   Serial.println();
 
@@ -73,6 +79,10 @@ void loop()
   ee_address++;
   EEPROM.write(ee_address,mybytes[1]);
 
+  Serial.print("saved");
+  Serial.println();
+  Serial.print("------------------------------");
+  Serial.println();
   
 
   while(1) // locks the program
