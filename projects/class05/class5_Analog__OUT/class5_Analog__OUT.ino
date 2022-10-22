@@ -11,7 +11,7 @@ pin: the pin to write to.
 value: the duty cycle: between 0 (always off) and 255 (always on).
 */
 const int ledPin = 9;      // LED connected to digital pin 9
-int val = 0; 
+int value = 0; 
 void setup()
 {
   Serial.begin(9600);          //  setup serial
@@ -20,11 +20,16 @@ void setup()
 
 void loop()
 {
-  analogWrite(ledPin, val); 
-   value++; // same as value = value + 1
-  if(value > 255)
-  {
-	value = 0;
+
+  for (value = 0; value <= 255; value += 2) {
+    analogWrite(9, value);
+    Serial.println(value);
+    delay(30); // Wait for 30 millisecond(s)
   }
-  delay(100);
+  for (value = 255; value >= 0; value -= 2) {
+    analogWrite(9, value);
+    Serial.println(value);
+    delay(30); // Wait for 30 millisecond(s)
+  }
 }
+
