@@ -9,6 +9,7 @@ const int USER_BUTTON2_INPUT = 3;
 
 void serial_debug(void);
 void light_control(void);
+void light_control_version2(void);
 int button_pressed(void);
 
 
@@ -59,9 +60,12 @@ void light_control(void)
 
 void light_control_version2(void)
 {
+	int button_rising_trigger;
+
 	static int state;
 	static int button_pressed_previous;
-	static int button_rising_trigger;
+	//*** keeps track of old button status (meaning pressed or not)
+	
 
 	button_rising_trigger = (button_pressed_previous == 0) && 
 							(button_pressed() == 1) ;

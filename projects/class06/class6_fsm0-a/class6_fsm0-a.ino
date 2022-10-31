@@ -19,7 +19,7 @@ int turn_light_off(void);
 
 unsigned int timer1 = 0;	//used for debouncing input
 unsigned int light_timeout_timer = 0;	//used for sleep mode (turn off light)
-unsigned int timer3 = 0;	// used for heartbeat led
+unsigned int heatbeat_timer = 0;	// used for heartbeat led
 
 void setup()
 {
@@ -98,21 +98,21 @@ void timers(void)
 	{ // our choice for 99 gives us increments of 100 ms
 		timer1++;
 		light_timeout_timer++;
-		timer3++;
+		heatbeat_timer++;
 		one_ms_timer = 0;
 	}
 }
 void heartbeat_control(void)
 {// same as any blinking LED function seeing in previous lectures
-	if(timer3 < 10)
+	if(heatbeat_timer < 10)
 	{
 		digitalWrite(heart_beat_pin,HIGH);
 	}
 	else
 	{
 		digitalWrite(heart_beat_pin,LOW);
-		if(timer3>=20)
-			timer3 = 0;
+		if(heatbeat_timer>=20)
+			heatbeat_timer = 0;
 	}
 }
 

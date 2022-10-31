@@ -54,20 +54,20 @@ void light_control(void)
 			{
 				state = 1;
 				allow_change_of_state = 0;
+				timeout_timer = 0;
 			}
 		}
 		else
 		{
 			timer1 = 0;
 		}
-		timeout_timer = 0;
 	}
 	else if(state == 1) 
 	{
-      	timer1 = 0;
 		if(timeout_timer > 200)
 		{
 			state = 0;
+			timer1 = 0;
 		}
 	}	
 	//execute commands based on state	

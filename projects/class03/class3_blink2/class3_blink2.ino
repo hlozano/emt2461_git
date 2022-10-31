@@ -8,7 +8,8 @@ void flash_led1(void);
 
 void setup()
 {                
-    pinMode(LED1, OUTPUT);   
+    pinMode(LED1, OUTPUT);  
+    Serial.begin(9600); 
 }
 void loop()
 {
@@ -23,6 +24,18 @@ void flash_led1()
 		digitalWrite(LED1,LOW);
 	else
 		LED1_tmr = 0;	//When does the timer get cleared?
+}
+
+void flash_led1_alternate_solution() 
+{
+	static bool led_status = 0;
+	if(LED1_tmr>=10)
+	{
+		led_status = !led_status;
+		digitalWrite(LED1,led_status);
+		LED1_tmr = 0;
+		Serial.println("Changing...");
+	}
 }
 void timers(void)
 {
