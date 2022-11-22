@@ -16,8 +16,8 @@ void loop()
     timers();
 	if((timer1>100) || (send_first_packet == 1)) // every 10 seconds.... '0' ,1,2,3,4,5,0,1,2,3,4,5
 	{		
+		timer1 = 0;		
 		send_first_packet = 0;
-		timer1 = 0;
 		tx_data = '0'+ blink_rate;
 		Serial.print(tx_data);
 		blink_rate++;

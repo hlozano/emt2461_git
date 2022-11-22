@@ -3,10 +3,10 @@ unsigned int one_ms_timer;
 unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 
-//#define CLOSED_STATE 0
-//#define OPENING_STATE 1
-//#define OPEN_STATE 2
-//#define CLOSING_STATE 3
+// #define CLOSED_STATE 0
+// #define OPENING_STATE 1
+// #define OPEN_STATE 2
+// #define CLOSING_STATE 3
 
 const int CLOSED_STATE = 0;
 const int OPENING_STATE = 1;

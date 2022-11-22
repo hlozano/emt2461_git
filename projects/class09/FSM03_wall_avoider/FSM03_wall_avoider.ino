@@ -18,7 +18,9 @@ void stop(void);             //motor functions
 void forward(void);          //motor functions
 void rotate_right(void);     //motor functions
 void rotate_left(void);      //motor functions
+
 void reverse(void);        //motor functions
+
 void timers(void);        // timers routine for system 
 void heartbeat_led(void);	//blink led
 
@@ -112,7 +114,7 @@ void distance_sensor_control()
 {
 	
 /*
-	if(distance_reading_timer > 1) // reading every 200ms
+	if(distance_reading_timer >= 2) // reading every 200ms
 	{
 		distance_reading_timer = 0;	
 		d = reading from Ultrasonic;

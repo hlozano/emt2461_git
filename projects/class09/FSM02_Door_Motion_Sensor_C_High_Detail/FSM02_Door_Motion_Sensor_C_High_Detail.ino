@@ -54,7 +54,7 @@ void door_control(void)
 	{
 		case CLOSED_STATE:
 			//door_state = 0 -> door is closed
-			if(read_sensor() == 1)
+			if(is_sensor_active() == 1)
 			{
 				door_state = OPENING_STATE;
 			}
@@ -69,7 +69,7 @@ void door_control(void)
 			break;
 		case OPEN_STATE:
 			//door_state = 2 -> door is open
-			if(read_sensor() == 1)
+			if(is_sensor_active() == 1)
 			{
 				timer1 = 0;
 			}
@@ -80,7 +80,7 @@ void door_control(void)
 			break;
 		case CLOSING_STATE:
 			//door_state = 3 -> door is closing
-			if(read_sensor() == 1)
+			if(is_sensor_active() == 1)
 			{
 				door_state = OPENING_STATE;
 			}

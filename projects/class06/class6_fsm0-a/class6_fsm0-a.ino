@@ -19,7 +19,7 @@ int turn_light_off(void);
 
 unsigned int timer1 = 0;	//used for debouncing input
 unsigned int light_timeout_timer = 0;	//used for sleep mode (turn off light)
-unsigned int heatbeat_timer = 0;	// used for heartbeat led
+unsigned int heartbeat_timer = 0;	// used for heartbeat led
 
 void setup()
 {
@@ -35,8 +35,6 @@ void loop()
 void light_control()
 {
 	static int light_state = 0;
-
-
 
 	switch(light_state)
 	{
@@ -68,7 +66,7 @@ int button_pressed(void)
 
 	if((digitalRead(button_pin) == 1) && (allow_button_to_be_read == 1 ))
 	{ 
-		if(timer1 > 5) // debounce for half
+		if(timer1 >= 5) // debounce for half
 		{
 			allow_button_to_be_read = 0;
 			return 1;
@@ -98,21 +96,23 @@ void timers(void)
 	{ // our choice for 99 gives us increments of 100 ms
 		timer1++;
 		light_timeout_timer++;
-		heatbeat_timer++;
+		heartbeat_timer++;
 		one_ms_timer = 0;
 	}
 }
 void heartbeat_control(void)
 {// same as any blinking LED function seeing in previous lectures
-	if(heatbeat_timer < 10)
+	if(heartbeat_timer < 10)
 	{
 		digitalWrite(heart_beat_pin,HIGH);
 	}
-	else
+	else if(heartbeat_timer < 20)
 	{
 		digitalWrite(heart_beat_pin,LOW);
-		if(heatbeat_timer>=20)
-			heatbeat_timer = 0;
+	}
+	else
+	{
+		heartbeat_timer = 0;
 	}
 }
 

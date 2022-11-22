@@ -3,7 +3,7 @@
  {
    int addr;
    int status; // 0 for low 1 for high
- } ;
+ };
  
 struct LED_t newLED1;
 struct LED_t newLED2;

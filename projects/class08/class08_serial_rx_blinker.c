@@ -1,6 +1,4 @@
 /*		MCU # 2 		SLAVE			*/
-
-
 //DEFINE ALL timer1 AS UNSIGNED AS VARIABLES	
 
 unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
@@ -49,6 +47,7 @@ void loop()
 			flash_led5s();
 			break;
 		default:
+			command = 0;
 			turn_off();
 	}
 }

@@ -9,19 +9,19 @@
 	public:
 		LED(int pin);
 		int getaddr(){return addr;};
-		bool getstate(){ return ledstate;};
+		bool getstatus(){ return status;};
 		void turnon();
 		void turnoff();
 		void toggle();
 	private:
-		bool ledstate;
+		bool status;
 		int addr;
  };
 
 LED::LED(int pin)
 {
 	addr = pin;
-	//ledstate = 0;
+	//status = 0;
 	pinMode(addr, OUTPUT); 	
 	turnoff();
 }
@@ -30,27 +30,22 @@ LED::LED(int pin)
 
 void LED::turnon()
 {
-	ledstate = 1;
-	digitalWrite(addr,ledstate);
+	status = 1;
+	digitalWrite(addr,status);
 }
 void LED::turnoff()
 {
-	ledstate = 0;
-	digitalWrite(addr,ledstate);
+	status = 0;
+	digitalWrite(addr,status);
 }
 void LED::toggle()
 {
-	ledstate= !ledstate;
-	digitalWrite(addr,ledstate);
+	status= !status;
+	digitalWrite(addr,status);
 }
   
-
-
-
-
   
 LED newLED1(13);
-
 
 void setup() 
 {                
@@ -61,4 +56,4 @@ void loop()
 {
 	newLED1.toggle();
 	delay(1000);              
-}  
+}

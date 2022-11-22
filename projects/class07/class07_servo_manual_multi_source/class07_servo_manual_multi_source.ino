@@ -4,7 +4,7 @@ Servo myservo;  // create servo object to control a servo
                 // a maximum of eight servo objects can be created 
  
 int pos = 0;    // variable to store the servo position 
-#define USE_BUILT_IN_LED 0
+#define USE_BUILT_IN_LED 1
 #if USE_BUILT_IN_LED == 1
 const int LED1 = 13;
 #else
