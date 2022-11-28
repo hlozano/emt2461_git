@@ -12,7 +12,7 @@ unsigned long timer1 = 0; // timer used for right rotation
 unsigned long timer2 = 0; // timer used for left rotation 					
 unsigned long timer3 = 0; // timer used for stop transition (a.k.a pause) 					
 
-const unsigned long PAUSE_TIME = 20; //  10 is 1 second
+const unsigned long PAUSE_TIME = 30; //  10 is 1 second
 		
 void distance_sensor_control(void);
 void robot_control(void);

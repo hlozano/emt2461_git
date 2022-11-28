@@ -104,6 +104,7 @@ void robot_control()
 			break;
 
     	default:
+    		run_state = 0;
 			break;		
 	}
 

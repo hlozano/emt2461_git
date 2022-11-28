@@ -7,6 +7,8 @@ char tx_data = '0';
 
 int send_first_packet = 1;
 
+void heartbeat_led(void);
+
 void setup()
 {              
 	Serial.begin(9600);  
