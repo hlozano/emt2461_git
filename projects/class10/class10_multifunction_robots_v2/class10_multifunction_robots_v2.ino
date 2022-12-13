@@ -12,6 +12,27 @@ void setup()
 }
 void loop()
 {
+
+
+	timers();
+	checkdistance();
+	checktemperature();
+
+	check_mode_of_operation();
+	
+	if(Mode == 1)
+		control_program_1(); // for example : Auto
+	else if (Mode == 2)
+		control_program_2(); // for example : Manual
+	else
+		control_program_0(); // for example : OFF
+
+
+
+}
+
+void check_mode_of_operation(void)
+{
 	if(digitalRead(mode1_pin) == 0)
 	{//by default it will go here with no connections
 		Mode = 1;
@@ -24,18 +45,4 @@ void loop()
 	{
 		Mode = 0;
 	}
-
-	timers();
-	checkdistance();
-	checktemperature();
-	
-	if(Mode == 1)
-		control_program_1(); // for example : Auto
-	else if (Mode == 2)
-		control_program_2(); // for example : Manual
-	else
-		control_program_0(); // for example : OFF
-	else
-
-
 }
