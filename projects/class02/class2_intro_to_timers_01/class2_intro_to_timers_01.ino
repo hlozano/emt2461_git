@@ -7,21 +7,19 @@ void setup()
 }
 void loop()
 {
-	static unsigned long ms_runtime = 0; // record the # ms the mcu has been running
+	static unsigned long millis_old = 0; // record the # ms the mcu has been running
 	static unsigned long one_ms_timer = 0; //will help me track one ms intervals
 								// this one keeps track of one ms intervals
 								// it changes from 0 -> 999
 
     counter++;
-    if(millis() > ms_runtime)
+    if(millis() > millis_old)
 	{//it falls into this section once every 1ms
-		ms_runtime = ms_runtime + 1;
-		one_ms_timer = one_ms_timer + 1; //one_ms_timer++;  
+		millis_old = millis();
+		one_ms_timer++; //one_ms_timer++;  
 	}
-	//if(one_ms_timer>=1000)  // meaning every 1s
-	if(one_ms_timer>=100)     // meaning every 0.1s
-	//if(one_ms_timer>=10) 	  // meaning every 10ms
-	//if(one_ms_timer>=1)     // meaning every 1ms
+
+	if(one_ms_timer>=1000)     // meaning every 1s
 	{	
 		timer1++;
 		one_ms_timer = 0;
