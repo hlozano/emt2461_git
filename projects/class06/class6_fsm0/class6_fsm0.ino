@@ -97,26 +97,24 @@ void loop()
 	}
 	traffic_light_state_prev = traffic_light_state; 
 }
+
 void timers(void)
 {
-	static unsigned long ms_runtime;
-	static int one_ms_timer;
-	
-	if(millis() > (ms_runtime + 1))
-	{	ms_runtime = ms_runtime + 1;
-		one_ms_timer++;  
-	}
-	else if( ms_runtime > millis())
-		ms_runtime = millis();
-	if(one_ms_timer > 99)
-	{	
-		one_ms_timer = 0;
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	unsigned interval = 100; 	// meaning every 100ms
+
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 100s
+		millis_old = millis_old + interval;
 		timer1++;
 		go_input_dbnc_tmr++;
 		stop_input_dbnc_tmr++;
 		waiting_in_yellow_tmr++;
 	}
+	if(millis_old > millis())
+	{ //if you run for a very long time, correct overflow
+		millis_old = millis();	
+	}		
 }
-
 
 

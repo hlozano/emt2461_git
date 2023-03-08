@@ -94,24 +94,15 @@ else // this is not written down but just implicit
 
 void timers(void)
 {
-	static unsigned long ms_runtime = 0;
-	static int one_ms_timer = 0; 
-	int i;
-	if(millis() > ms_runtime)
-	{
-		ms_runtime = ms_runtime + 1;
-		one_ms_timer++;  
-	}
-	else if( ms_runtime > millis())
-	{ // ELSE PART IS NOT NEEDED unless you 
-	  // are running your code for more than ~ 40 days
-		ms_runtime = millis();
-	}
-	if(one_ms_timer > 99)
-	{ // our choice for 99 gives us increments of 100 ms
-		timer1++;
-		timer2++;
-		timer3++;
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	static unsigned interval = 100; 	// meaning every 100ms
+
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 100s
+		millis_old = millis_old + interval;
+		LED1_timer++;
+		LED2_timer++;
+		LED3_timer++;
 		one_ms_timer = 0;
 	}
 	// this means that
@@ -122,5 +113,9 @@ void timers(void)
 	// if timer1 is 36000.... = 3600s = 1 hour
 	//
 
+	if(millis_old > millis())
+	{ //if you run for a very long time, correct overflow
+		millis_old = millis();	
+	}		
 }
 

@@ -7,30 +7,29 @@ void setup()
 }
 void loop()
 {
-	static unsigned long millis_old = 0; // record the # ms the mcu has been running
-	static unsigned long one_ms_timer = 0; //will help me track one ms intervals
-								// this one keeps track of one ms intervals
-								// it changes from 0 -> 999
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	static unsigned interval = 1000; 	// meaning every 1s
 
     counter++;
-    if(millis() > millis_old)
-	{//it falls into this section once every 1ms
-		millis_old = millis();
-		one_ms_timer++; //one_ms_timer++;  
-	}
 
-	if(one_ms_timer>=1000)     // meaning every 1s
-	{	
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 1000ms
+		millis_old = millis_old + interval;
+
 		timer1++;
-		one_ms_timer = 0;
 		Serial.print("counter  ");
         Serial.println(counter);
 
         Serial.print("millis() returns  ");
         Serial.println(millis());
 
-		counter = 0;
+		counter = 0;	
 	}
+	// else if(millis_old > millis())
+	// { //if you run for a very long time, correct overflow
+	// 	millis_old = millis();	
+	// }
+
 }
 
 /* Special Note

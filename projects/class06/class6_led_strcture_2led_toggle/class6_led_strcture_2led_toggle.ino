@@ -37,6 +37,5 @@ void loop()
   newLED1.state = 0; 
   digitalWrite(newLED2.addr , HIGH);   // set the LED on
   newLED2.state = 1; 
-  
   delay(1000);              // wait for a second
 }

@@ -31,7 +31,8 @@ void loop()
       Serial.print(address);
       Serial.print("   contains ");
       Serial.print(myvariable);
-      Serial.println();     
+      Serial.println();   
+      delay(10);  
     }
 
 	//for(;;);

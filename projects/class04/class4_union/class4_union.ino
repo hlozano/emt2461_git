@@ -28,11 +28,11 @@ void loop()
   Serial.println();
 
   
-  
+
   Serial.println();
   myinteger=2064;
    Serial.println("myinteger= 2064 and then");
- Serial.print("   mybytes[0]= ");
+  Serial.print("   mybytes[0]= ");
   Serial.println(mybytes[0], DEC); 
   Serial.print("   mybytes[1]= ");
   Serial.print(mybytes[1], DEC);

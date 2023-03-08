@@ -40,23 +40,20 @@ void flash_led1()
 {
 	if(timer1<1)			//first 10 (10 times 100 ms = 1s)
 		digitalWrite(LED1,HIGH); 
-	else
-	{
+	else if(timer1 <2)
 		digitalWrite(LED1,LOW);
-		if(timer1>=2) //(between 10 and 20 - another 1 s)
-			timer1 = 0;	//When does the timer get cleared?
-	
+	else
+		timer1 = 0;
+
 }
 void flash_led2()
 {
 	if(timer2<15)			//Check timer and execute action 
 		digitalWrite(LED2,HIGH); 
-	else
-	{
+	else if (timer2 < 30)
 		digitalWrite(LED2,LOW);
-		if(timer2>=30)
-			timer2 = 0;	//When does the timer get cleared?
-	}
+	else
+		timer2 = 0;
 }
 void flash_led3()
 {
@@ -70,35 +67,22 @@ void flash_led3()
 	}
 }
 
+
 void timers(void)
 {
-	static unsigned long ms_runtime;
-	static int one_ms_timer;
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	static unsigned interval = 100; 	// meaning every 100ms
 
-	if(millis() > ms_runtime)
-	{//code falls in this if statement every 1 ms
-		ms_runtime++;
-		one_ms_timer++;  
-	}
-	else if( millis() < ms_runtime)
-	{
-		ms_runtime = millis();
-		one_ms_timer++;  
-	}
-	//else only executes ~ every 50 days
-
-
-	if(one_ms_timer > 99) // every 100 ms
-	{
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 100s
+		millis_old = millis_old + interval;
 		timer1++;
 		timer2++;
 		timer3++;
-		one_ms_timer = 0;
-
-		/* extra precaution
-		if(timer1 < 4000000000)
-			timer1++
-		*/
+		//<---- Add new timer here		
 	}
+	if(millis_old > millis())
+	{ //if you run for a very long time, correct overflow
+		millis_old = millis();	
+	}	
 }
-

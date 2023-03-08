@@ -78,28 +78,6 @@ int button_pressed(void)
 	}
 	return 0;
 }
-void timers(void)
-{
-	static unsigned long ms_runtime;
-	static int one_ms_timer;
-	if(millis() > (ms_runtime + 1))
-	{
-		ms_runtime = ms_runtime + 1;
-		one_ms_timer++;  
-	}
-	else if( ms_runtime > millis())
-	{ // ELSE PART IS NOT NEEDED unless you 
-	  // are running your code for more than _40___ days
-		ms_runtime = millis();
-	}
-	if(one_ms_timer > 99)
-	{ // our choice for 99 gives us increments of 100 ms
-		timer1++;
-		light_timeout_timer++;
-		heartbeat_timer++;
-		one_ms_timer = 0;
-	}
-}
 void heartbeat_control(void)
 {// same as any blinking LED function seeing in previous lectures
 	if(heartbeat_timer < 10)
@@ -126,3 +104,21 @@ void turn_light_off(void)
 	digitalWrite(light_pin,LOW);
 }
 
+
+void timers(void)
+{
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	unsigned interval = 100; 	// meaning every 100ms
+
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 100s
+		millis_old = millis_old + interval;
+		timer1++;
+		light_timeout_timer++;
+		heartbeat_timer++;
+	}
+	if(millis_old > millis())
+	{ //if you run for a very long time, correct overflow
+		millis_old = millis();	
+	}		
+}

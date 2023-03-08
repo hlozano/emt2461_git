@@ -73,30 +73,20 @@ void flash_LED3_pin()
 }
 void timers(void)
 {
-	static unsigned long ms_runtime = 0;
-	static unsigned int one_ms_timer = 0;
-	if(millis() > ms_runtime)
-	{	//ms_runtime = ms_runtime + 1;
-		ms_runtime++;
-		one_ms_timer++;  
-	}
-	else if( ms_runtime > millis())
-	{
-		ms_runtime = millis();
-		one_ms_timer++; 
-	}	
+	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	static unsigned interval = 100; 	// meaning every 100ms
 
-	if(one_ms_timer > 99)
-	{ // this runs every 100 ms
+    if(millis() >= millis_old + interval)
+	{//it falls into this section once every 100s
+		millis_old = millis_old + interval;
 		LED1_timer++;
 		LED2_timer++;
 		LED3_timer++;
 		debug_print_tmr++;
-		one_ms_timer = 0;
+		//<---- Add new timer here		
 	}
+	if(millis_old > millis())
+	{ //if you run for a very long time, correct overflow
+		millis_old = millis();	
+	}	
 }
-/*
-values for long variable
-	ms				s			hr			days		weeks		months
-	4,294,967,295	4294967.295	1193.046471	49.71026962	7.101467088	1.638800097
-*/
