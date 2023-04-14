@@ -251,10 +251,6 @@ void serial_debugger(void)
 }
 
 
-CLOSED_STATE
-OPENING_STATE
-OPEN_STATE
-CLOSING_STATE
 
 
 void door_simulator(void)
@@ -308,14 +304,14 @@ void door_simulator(void)
 
   if(millis() >= millis_old + interval)
   {//it falls into this section once every 100s
-	millis_old = millis_old + interval;
-	led_tmr++;
-	timer1++;
-	sensor_tmr++;
-	debug_print_tmr++;
-	sim_door_position_tmr++;
-	if(time_to_block > 0)
-		time_to_block--;	
+		millis_old = millis_old + interval;
+		led_tmr++;
+		timer1++;
+		sensor_tmr++;
+		debug_print_tmr++;
+		sim_door_position_tmr++;
+		if(time_to_block > 0)
+			time_to_block--;	
   }
   if(millis_old > millis())
   { //if you run for a very long time, correct overflow
