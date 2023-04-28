@@ -1,9 +1,9 @@
 int run_state = 0;	//run_state = 0 stop
-					//run_state = 1 move_forward
-					//run_state = 2 rotate_right
-					//run_state = 3 rotate_left
+										//run_state = 1 move_forward
+										//run_state = 2 rotate
 
-int attempts = 0;
+
+
 int distance = 0; // 
 
 //system timers
@@ -16,10 +16,7 @@ void robot_control(void);
 
 void stop(void);             //motor functions
 void forward(void);          //motor functions
-void rotate_right(void);     //motor functions
-void rotate_left(void);      //motor functions
-
-void reverse(void);        //motor functions
+void rotate();							 //motor function
 
 void timers(void);        // timers routine for system 
 void heartbeat_led(void);	//blink led
@@ -49,12 +46,12 @@ void loop()
 	distance_sensor_control_1();
 	robot_control();
 }
-	//run_state = 0 stop
-	//run_state = 1 move forward
-	//run_state = 2 rotate_right
-	//run_state = 3 rotate_left
+
 void robot_control()
 {
+	//run_state = 0 stop
+	//run_state = 1 move forward
+  //run_state = 2 rotate
 	switch(run_state)
 	{
 		case 0:
@@ -63,48 +60,30 @@ void robot_control()
 			{
 				run_state = 1;
 			}
-			else //if (distance <= 20)
+			else // if(d<=20)
 			{
-				if(attempts < 3)
-				{
-					attempts++;
-					run_state = 2;
-					timer1 = 0;
-				}
-				else
-				{
-					timer2 = 0;
-					run_state = 3;
-					attempts = 0;
-				}
+				run_state = 2;
+				timer1 = 0;
 			}
+
 			break;
 		case 1:
 			forward();
-			if(distance < 20)
+			if(distance <= 20)
 			{
 				run_state = 0;	
 			}
 			break;	
-
 		case 2:
-			rotate_right();
-			if(timer1 >= 20) // 2.0 seconds (based on 90 degrees rotation) - spinning one wheel only
-			{				
+			rotate();
+			if(timer1>=10)
+			{
 				run_state = 0;
 			}
 			break;	
-		case 3:
-			rotate_left();
-			if(timer2 >= 60)
-			{
-				run_state = 0;	
-			}
-			break;
-
     	default:
     		run_state = 0;
-			break;		
+			break;	
 	}
 
 }
@@ -132,16 +111,13 @@ void reverse()
 {
 
 }
-//rotate (right or left? : decide later)
-void rotate_right()
+
+//rotate
+void rotate()
 {
 
 }
 
-void rotate_left()
-{
-
-}
 //advance version of timers
 //it allows timers of 1 ms, 10ms 100 ms and up to 1s increments
 void timers(void)
