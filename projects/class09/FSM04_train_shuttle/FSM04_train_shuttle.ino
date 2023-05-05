@@ -6,7 +6,7 @@ int car_at_station_A(void);			// read sensor @ station A
 int car_at_station_B(void);			// read sensor @ station B
 int e_brake_engaged(void);			// tells me ebrake is engaged
 
-void FSM3_control(void)
+void FSM4_control(void)
 {
 	static state = 0;
 	switch(state)
@@ -63,10 +63,7 @@ void FSM3_control(void)
 				state = 3;
 				time_in_station_tmr = 0;
 			}
-
 			break;
-
-		
 	};
 	
 }

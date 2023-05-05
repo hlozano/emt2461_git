@@ -20,6 +20,7 @@ void setup()
 }
 void loop()
 { 
+
     timers();
   if(display_tmr >=5)
   {// every 0.5 secs
