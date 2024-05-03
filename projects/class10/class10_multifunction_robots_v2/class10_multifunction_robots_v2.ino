@@ -33,6 +33,7 @@ void loop()
 
 void check_mode_of_operation(void)
 {
+	static int previous_Mode = 0;
 	if(digitalRead(mode1_pin) == 0)
 	{//by default it will go here with no connections
 		Mode = 1;
@@ -45,4 +46,15 @@ void check_mode_of_operation(void)
 	{
 		Mode = 0;
 	}
+	if (previous_Mode != Mode)
+	{
+		reset_all_systems();
+		previous_Mode = Mode;
+	}
+}
+
+void reset_all_systems(void)
+{//Make sure all your systems are 
+// set to off so nothing is being driven 
+
 }
