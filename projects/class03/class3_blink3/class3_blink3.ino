@@ -4,6 +4,8 @@
 unsigned long timer1; // timer1 is incremented every 100ms = 0.1s
 unsigned long timer2; // timer2 is incremented every 100ms = 0.1s
 unsigned long timer3; // timer3 is incremented every 100ms = 0.1s
+unsigned long timer99; // timer99 is decremented every 100ms = 0.1s
+
 
 void flash_led1();
 void flash_led2();
@@ -70,19 +72,21 @@ void flash_led3()
 
 void timers(void)
 {
-	static unsigned long millis_old = 0;// track the # ms the mcu has been running
+	static unsigned long previousMillis = 0;// track the # ms the mcu has been running
 	static unsigned interval = 100; 	// meaning every 100ms
 
-    if(millis() >= millis_old + interval)
+    if(millis() >= previousMillis + interval)
 	{//it falls into this section once every 100s
-		millis_old = millis_old + interval;
+		previousMillis = previousMillis + interval;
 		timer1++;
 		timer2++;
 		timer3++;
+		if(timer99>0)
+			timer99--;
 		//<---- Add new timer here		
 	}
-	if(millis_old > millis())
+	if(previousMillis > millis())
 	{ //if you run for a very long time, correct overflow
-		millis_old = millis();	
+		previousMillis = millis();	
 	}	
 }
