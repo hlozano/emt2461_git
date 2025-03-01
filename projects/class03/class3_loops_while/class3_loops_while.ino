@@ -28,8 +28,8 @@ void loop()
   int safe_count = 0;
 
   safe_count = 0;
-  while(( i != 10) && (safe_count < 1000))
-  // while(( i < 10) && (safe_count < 1000))
+  //while(( i != 10) && (safe_count < 1000))
+   while(( i < 10) && (safe_count < 1000))
   {
     safe_count++;
     Serial.println(numbers[i]);

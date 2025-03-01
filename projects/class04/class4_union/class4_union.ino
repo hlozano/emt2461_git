@@ -37,10 +37,6 @@ void loop()
   Serial.print("   mybytes[1]= ");
   Serial.print(mybytes[1], DEC);
 
-
-  
-  
-
   while(1) // locks the program
   {
     //program never leaves

@@ -35,15 +35,18 @@ void setup()
   Serial.begin(9600);
   ee_address = 0;
   value = EEPROM.read(ee_address);
-  if(value != 99) // Memory was not initialized
+  if(value != 99) // Memory was not initialized // 99d=0x63
   {
     Serial.println("EEPROM was not initialized");
     EEPROM.write(ee_address,99); // make sure I leave a mark knowing I was here
-    myinteger = 30000; // 30000
+    myinteger = 30000; // 30000d->0x7530
     ee_address = 1;
     EEPROM.write(ee_address,mybytes[0]);
+    Serial.println(mybytes[0]);//-> 48d=>0x30
+
     ee_address = 2;
     EEPROM.write(ee_address,mybytes[1]);
+    Serial.println(mybytes[1]);//->117d->0x75
 
     Serial.println("EEPROM was NOT initialized. We saved a 99 in ee_adress 0, and 30,000 as my counter");
     while(1);//intentional
